@@ -1,0 +1,1475 @@
+
+/* 
+================================================================================
+  PANERA'S - PANADERÍA ARTESANAL
+  Hoja de Estilos CSS3
+  
+  Estructura del archivo:
+  1. Variables CSS (Custom Properties)
+  2. Reset y Estilos Base
+  3. Tipografía
+  4. Header/Navegación
+  5. Sección Hero
+  6. Sección Productos
+  7. Sección Nosotros
+  8. Sección Ubicación
+  9. Footer
+  10. Utilidades
+  11. Media Queries (Responsive Design)
+  
+  Convención de nomenclatura: BEM (Block Element Modifier)
+  Ejemplo: .bloque__elemento--modificador
+================================================================================
+*/
+
+
+/* ============================================================================
+   1. VARIABLES CSS (CUSTOM PROPERTIES)
+   ============================================================================
+   Las variables CSS permiten reutilizar valores en todo el documento.
+   Se definen en :root para alcance global.
+   Sintaxis: --nombre-variable: valor;
+   Uso: propiedad: var(--nombre-variable);
+   
+   Ventajas:
+   - Mantenimiento centralizado (cambiar un color en un solo lugar)
+   - Tematización fácil (modo claro/oscuro)
+   - Mejor legibilidad del código
+*/
+
+:root {
+  /* === PALETA DE COLORES BASADA EN LAS IMÁGENES === */
+  
+  /* Colores principales - Azules oscuros */
+  --color-primary: #0a1628;           /* Azul marino muy oscuro (fondo principal) */
+  --color-primary-dark: #060d1a;      /* Azul casi negro (fondos de tarjetas) */
+  --color-primary-light: #162642;     /* Azul marino más claro (hover, bordes) */
+  
+  /* Color de acento - Dorado */
+  --color-accent: #d4a574;            /* Dorado cálido (títulos, enlaces activos) */
+  --color-accent-light: #e6c499;      /* Dorado claro (hover en botones) */
+  --color-accent-dark: #b8915f;       /* Dorado oscuro (sombras, bordes) */
+  
+  /* Colores de texto */
+  --color-text-primary: #ffffff;      /* Blanco puro (títulos principales) */
+  --color-text-secondary: #c5d0e6;    /* Gris azulado claro (texto cuerpo) */
+  --color-text-muted: #8893ab;        /* Gris azulado medio (texto secundario) */
+  
+  /* Colores para badges */
+  --color-badge-popular: #f4d03f;     /* Amarillo dorado brillante */
+  --color-badge-especial: #d4a574;    /* Dorado (igual que accent) */
+  --color-badge-nuevo: #f4d03f;       /* Amarillo (igual que popular) */
+  --color-badge-text: #0a1628;        /* Texto oscuro sobre badges claros */
+  
+  /* === TIPOGRAFÍA === */
+  
+  /* Familias de fuentes */
+  --font-primary: 'Poppins', sans-serif;          /* Cuerpo de texto, navegación */
+  --font-secondary: 'Playfair Display', serif;    /* Títulos elegantes, logo */
+  
+  /* Tamaños de fuente - Sistema modular escalable */
+  --font-size-xs: 0.75rem;      /* 12px - Textos muy pequeños */
+  --font-size-sm: 0.875rem;     /* 14px - Textos secundarios */
+  --font-size-base: 1rem;       /* 16px - Base (1rem = tamaño por defecto del navegador) */
+  --font-size-md: 1.125rem;     /* 18px - Texto destacado */
+  --font-size-lg: 1.25rem;      /* 20px - Subtítulos pequeños */
+  --font-size-xl: 1.5rem;       /* 24px - Subtítulos */
+  --font-size-2xl: 2rem;        /* 32px - Títulos de sección */
+  --font-size-3xl: 2.5rem;      /* 40px - Títulos principales */
+  --font-size-4xl: 3rem;        /* 48px - Títulos hero */
+  
+  /* Pesos de fuente */
+  --font-weight-light: 300;     /* Ligera */
+  --font-weight-normal: 400;    /* Normal */
+  --font-weight-medium: 500;    /* Media */
+  --font-weight-semibold: 600;  /* Semi-negrita */
+  --font-weight-bold: 700;      /* Negrita */
+  
+  /* === ESPACIADO === 
+     Sistema de espaciado consistente basado en múltiplos de 8px
+  */
+  --spacing-xs: 0.5rem;    /* 8px */
+  --spacing-sm: 1rem;      /* 16px */
+  --spacing-md: 1.5rem;    /* 24px */
+  --spacing-lg: 2rem;      /* 32px */
+  --spacing-xl: 3rem;      /* 48px */
+  --spacing-2xl: 4rem;     /* 64px */
+  --spacing-3xl: 6rem;     /* 96px */
+  
+  /* === BORDES Y SOMBRAS === */
+  
+  /* Radios de borde - Esquinas redondeadas */
+  --border-radius-sm: 4px;      /* Botones pequeños */
+  --border-radius-md: 8px;      /* Tarjetas, botones */
+  --border-radius-lg: 12px;     /* Elementos grandes */
+  --border-radius-xl: 16px;     /* Contenedores destacados */
+  --border-radius-full: 50%;    /* Círculos perfectos (badges) */
+  
+  /* Sombras - Profundidad visual */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);           /* Sombra sutil */
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);         /* Sombra media */
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);          /* Sombra pronunciada */
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.25);        /* Sombra muy pronunciada */
+  
+  /* === TRANSICIONES === 
+     Valores reutilizables para animaciones suaves
+  */
+  --transition-fast: 0.15s ease;      /* Transiciones rápidas (hover pequeño) */
+  --transition-normal: 0.3s ease;     /* Transiciones normales (la mayoría) */
+  --transition-slow: 0.5s ease;       /* Transiciones lentas (efectos dramáticos) */
+  
+  /* === CONTENEDOR === */
+  --container-max-width: 1200px;      /* Ancho máximo del contenido */
+  --container-padding: 2rem;          /* Padding lateral del contenedor */
+}
+
+
+/* ============================================================================
+   2. RESET Y ESTILOS BASE
+   ============================================================================
+   Reset CSS elimina estilos inconsistentes entre navegadores.
+   Establece una base limpia y predecible para construir.
+*/
+
+/* 
+  Selector universal (*) - Afecta TODOS los elementos
+  box-sizing: border-box - CRÍTICO para diseño moderno
+  
+  Por defecto, width/height NO incluyen padding ni border:
+  width: 200px + padding: 20px = 240px total (confuso)
+  
+  Con border-box:
+  width: 200px INCLUYE padding y border (más intuitivo)
+*/
+*,
+*::before,
+*::after {
+  margin: 0;                    /* Elimina márgenes por defecto */
+  padding: 0;                   /* Elimina padding por defecto */
+  box-sizing: border-box;       /* Incluye padding y border en width/height */
+}
+
+/*
+  ::before y ::after son pseudo-elementos.
+  Permiten insertar contenido generado con CSS.
+  Útiles para decoración, íconos, efectos visuales.
+*/
+
+/* 
+  HTML y BODY - Configuración base del documento
+*/
+html {
+  font-size: 16px;              /* 1rem = 16px (base para todas las medidas rem) */
+  scroll-behavior: smooth;      /* Desplazamiento suave al hacer clic en anclas (#id) */
+  -webkit-font-smoothing: antialiased;      /* Mejora renderizado de fuentes en WebKit (Safari, Chrome) */
+  -moz-osx-font-smoothing: grayscale;       /* Mejora renderizado en Firefox para macOS */
+}
+
+/*
+  scroll-behavior: smooth - Animación suave al navegar con anclas.
+  Ejemplo: al hacer clic en "Ver Menú" (#productos), desplaza suavemente.
+*/
+
+body {
+  font-family: var(--font-primary);         /* Fuente por defecto: Poppins */
+  font-size: var(--font-size-base);         /* 16px */
+  font-weight: var(--font-weight-normal);   /* Peso normal (400) */
+  line-height: 1.6;                         /* Altura de línea: 1.6x tamaño de fuente */
+  color: var(--color-text-secondary);       /* Color de texto gris azulado */
+  background-color: var(--color-primary);   /* Fondo azul marino oscuro */
+  overflow-x: hidden;                       /* Evita scroll horizontal accidental */
+}
+
+/*
+  line-height: 1.6 - Mejora legibilidad (espaciado vertical entre líneas).
+  Valor óptimo: 1.5-1.8 para texto de cuerpo.
+  Sin unidad = multiplicador del tamaño de fuente.
+*/
+
+/*
+  Configuración de imágenes para responsive y accesibilidad
+*/
+img {
+  max-width: 100%;              /* Nunca excede el ancho del contenedor */
+  height: auto;                 /* Mantiene proporción de aspecto */
+  display: block;               /* Elimina espacio debajo de imágenes (inline por defecto) */
+}
+
+/*
+  display: block para imágenes:
+  Por defecto, img es inline, lo que crea un pequeño espacio debajo.
+  block elimina ese espacio y facilita centrado con margin: auto.
+*/
+
+/*
+  Estilos para enlaces
+*/
+a {
+  color: inherit;               /* Hereda color del padre (no azul por defecto) */
+  text-decoration: none;        /* Sin subrayado */
+  transition: var(--transition-normal);   /* Transición suave en cambios (hover) */
+}
+
+/*
+  color: inherit - Los enlaces toman el color del texto circundante.
+  Permite controlar color específicamente donde se necesite.
+*/
+
+/*
+  Estilos para listas
+*/
+ul, ol {
+  list-style: none;             /* Elimina viñetas/números por defecto */
+}
+
+/*
+  list-style: none - Útil para menús de navegación y listas estilizadas.
+  Cuando necesites viñetas, agrégalas manualmente con CSS.
+*/
+
+/*
+  Estilos para botones e inputs
+*/
+button,
+input,
+textarea,
+select {
+  font-family: inherit;         /* Heredan la fuente del body (no siempre automático) */
+  font-size: inherit;           /* Heredan tamaño de fuente */
+  border: none;                 /* Sin borde por defecto (agregar manualmente) */
+  outline: none;                /* Sin outline en focus (agregar alternativa accesible) */
+}
+
+/*
+  IMPORTANTE: Eliminar outline sin alternativa es MALO para accesibilidad.
+  Los usuarios de teclado necesitan ver qué elemento tiene el foco.
+  Siempre proporcionar indicador visual alternativo (border, box-shadow).
+*/
+
+button {
+  cursor: pointer;              /* Cursor de mano al pasar sobre botones */
+  background-color: transparent;  /* Fondo transparente por defecto */
+}
+
+
+/* ============================================================================
+   3. TIPOGRAFÍA
+   ============================================================================
+   Estilos base para jerarquía de encabezados y texto.
+*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);       /* Playfair Display - Elegante serif */
+  font-weight: var(--font-weight-semibold); /* Semi-negrita (600) */
+  line-height: 1.2;                         /* Líneas más compactas para títulos */
+  color: var(--color-text-primary);         /* Blanco puro para máximo contraste */
+  margin-bottom: var(--spacing-md);         /* Espacio debajo de cada título */
+}
+
+/*
+  line-height: 1.2 para títulos vs 1.6 para cuerpo.
+  Títulos cortos no necesitan tanto espacio vertical.
+*/
+
+h1 { font-size: var(--font-size-4xl); }    /* 48px - Título principal (logo) */
+h2 { font-size: var(--font-size-3xl); }    /* 40px - Títulos de sección */
+h3 { font-size: var(--font-size-2xl); }    /* 32px - Subtítulos importantes */
+h4 { font-size: var(--font-size-xl); }     /* 24px - Títulos de tarjetas */
+h5 { font-size: var(--font-size-lg); }     /* 20px - Subtítulos pequeños */
+h6 { font-size: var(--font-size-md); }     /* 18px - Encabezados mínimos */
+
+p {
+  margin-bottom: var(--spacing-sm);         /* Espacio entre párrafos */
+  color: var(--color-text-secondary);       /* Gris azulado claro */
+}
+
+strong {
+  font-weight: var(--font-weight-semibold); /* Semi-negrita para énfasis */
+  color: var(--color-text-primary);         /* Blanco para destacar */
+}
+
+
+/* ============================================================================
+   4. HEADER / NAVEGACIÓN
+   ============================================================================
+   Barra de navegación fija en la parte superior.
+*/
+
+.header {
+  position: fixed;              /* Posición fija - permanece visible al hacer scroll */
+  top: 0;                       /* Pegado al borde superior */
+  left: 0;                      /* Pegado al borde izquierdo */
+  width: 100%;                  /* Ancho completo de la ventana */
+  background-color: rgba(10, 22, 40, 0.95);  /* Fondo semi-transparente */
+  backdrop-filter: blur(10px);  /* Efecto de desenfoque del contenido detrás */
+  box-shadow: var(--shadow-md); /* Sombra para separación visual */
+  z-index: 1000;                /* Índice Z alto para estar sobre otros elementos */
+  padding: var(--spacing-md) 0; /* Padding vertical */
+}
+
+/*
+  position: fixed - El elemento se posiciona relativo a la ventana del navegador.
+  Permanece en su lugar incluso al hacer scroll.
+  SIEMPRE usar top/bottom/left/right con position fixed/absolute.
+  
+  z-index: Controla el apilamiento vertical de elementos.
+  Mayor valor = más al frente.
+  Solo funciona con position: relative, absolute, fixed o sticky.
+  
+  backdrop-filter: blur() - Efecto moderno de desenfoque.
+  Crea sensación de profundidad ("glassmorphism").
+  Soporte: todos los navegadores modernos (Safari desde 2020).
+*/
+
+.header__container {
+  max-width: var(--container-max-width);    /* Ancho máximo 1200px */
+  margin: 0 auto;                           /* Centrado horizontal */
+  padding: 0 var(--container-padding);      /* Padding lateral */
+  display: flex;                            /* Flexbox para layout horizontal */
+  justify-content: space-between;           /* Espacio entre elementos (logo | nav | botón) */
+  align-items: center;                      /* Centrado vertical */
+  gap: var(--spacing-lg);                   /* Espacio entre hijos flex */
+}
+
+/*
+  FLEXBOX - Sistema de layout unidimensional (fila o columna).
+  
+  display: flex - Convierte el elemento en contenedor flex.
+  Los hijos directos se convierten en "flex items".
+  
+  justify-content: Alineación en el eje principal (horizontal en flex-direction: row).
+    - flex-start: Inicio (izquierda)
+    - flex-end: Final (derecha)
+    - center: Centro
+    - space-between: Primer y último elemento en extremos, espacio entre los demás
+    - space-around: Espacio igual alrededor de cada elemento
+    - space-evenly: Espacio completamente igual entre todos
+  
+  align-items: Alineación en el eje transversal (vertical en flex-direction: row).
+    - flex-start: Inicio (arriba)
+    - flex-end: Final (abajo)
+    - center: Centro
+    - stretch: Estira elementos al alto del contenedor (por defecto)
+  
+  gap: Espacio entre elementos flex (alternativa moderna a margin en cada hijo).
+  Soporte: todos los navegadores desde 2021.
+*/
+
+/* === LOGO === */
+.header__logo {
+  flex-shrink: 0;               /* No se encoge si falta espacio */
+}
+
+/*
+  flex-shrink: 0 - Evita que el logo se comprima en pantallas pequeñas.
+  Por defecto flex-shrink: 1 (elementos pueden encogerse).
+*/
+
+.logo__text {
+  font-family: var(--font-secondary);       /* Playfair Display - Elegante */
+  font-size: var(--font-size-2xl);          /* 32px */
+  font-weight: var(--font-weight-semibold); /* Semi-negrita */
+  color: var(--color-text-primary);         /* Blanco */
+  margin-bottom: 0;                         /* Sin margen (override del h1) */
+}
+
+/* === NAVEGACIÓN === */
+.header__nav {
+  flex-grow: 1;                 /* Crece para ocupar espacio disponible */
+  display: flex;                /* Flex para centrar la lista */
+  justify-content: center;      /* Centra la navegación */
+}
+
+/*
+  flex-grow: 1 - El elemento crece proporcionalmente para llenar espacio.
+  Solo el nav tiene flex-grow, así que ocupa todo el espacio entre logo y botón.
+*/
+
+.nav__list {
+  display: flex;                /* Lista horizontal */
+  gap: var(--spacing-lg);       /* Espacio entre enlaces */
+  align-items: center;          /* Centrado vertical */
+}
+
+
+.nav__link {
+  font-family: var(--font-primary);         /* Poppins */
+  font-size: var(--font-size-sm);           /* 14px */
+  font-weight: var(--font-weight-medium);   /* Peso medio (500) */
+  color: var(--color-text-secondary);       /* Gris azulado */
+  text-transform: uppercase;                /* MAYÚSCULAS */
+  letter-spacing: 0.5px;                    /* Espacio entre letras (tracking) */
+  padding: var(--spacing-xs) var(--spacing-sm);  /* Padding para área clickeable */
+  border-radius: var(--border-radius-sm);   /* Esquinas redondeadas sutiles */
+  transition: var(--transition-normal);     /* Transición suave */
+}
+
+/*
+  text-transform: uppercase - Convierte texto a mayúsculas.
+  Alternativa: font-variant: small-caps (versalitas).
+  
+  letter-spacing: Espacio adicional entre caracteres.
+  Positivo = más espacio, negativo = menos espacio.
+  Mejora legibilidad de texto en mayúsculas.
+*/
+
+.nav__link:hover {
+  color: var(--color-accent);               /* Dorado al pasar el mouse */
+  background-color: rgba(212, 165, 116, 0.1);  /* Fondo sutil dorado */
+}
+
+/*
+  :hover - Pseudo-clase que aplica estilos al pasar el mouse.
+  Fundamental para feedback visual de interactividad.
+*/
+
+.nav__link--active {
+  color: var(--color-accent);               /* Dorado para enlace activo */
+  font-weight: var(--font-weight-semibold); /* Más peso visual */
+}
+
+/*
+  --active - Modificador BEM para estado activo.
+  Indica la página/sección actual en la navegación.
+*/
+
+/* === BOTÓN CTA (Call To Action) === */
+.header__cta {
+  display: inline-block;                    /* Permite padding vertical */
+  padding: var(--spacing-xs) var(--spacing-md);  /* Padding interno */
+  background-color: var(--color-accent);    /* Fondo dorado */
+  color: var(--color-primary);              /* Texto oscuro (contraste) */
+  font-size: var(--font-size-sm);           /* 14px */
+  font-weight: var(--font-weight-semibold); /* Semi-negrita */
+  text-transform: uppercase;                /* Mayúsculas */
+  letter-spacing: 0.5px;                    /* Espaciado de letras */
+  border-radius: var(--border-radius-md);   /* Esquinas redondeadas */
+  transition: var(--transition-normal);     /* Transición suave */
+  white-space: nowrap;                      /* No rompe en múltiples líneas */
+}
+
+/*
+  inline-block - Híbrido entre inline y block.
+  - inline: fluye con el texto, no acepta width/height
+  - block: ocupa todo el ancho, acepta width/height
+  - inline-block: fluye con el texto PERO acepta width/height y padding vertical
+  
+  white-space: nowrap - Fuerza el texto a permanecer en una línea.
+  Previene que "Ver Ofertas" se rompa en dos líneas en pantallas pequeñas.
+*/
+
+.header__cta:hover {
+  background-color: var(--color-accent-light);  /* Dorado más claro */
+  transform: translateY(-2px);                  /* Eleva ligeramente el botón */
+  box-shadow: var(--shadow-md);                 /* Agrega sombra */
+}
+
+/*
+  transform: translateY() - Mueve elemento verticalmente.
+  Valores negativos = arriba, positivos = abajo.
+  No afecta el layout (otros elementos no se mueven).
+  
+  Diferencia con position: relative + top:
+  - transform es más performante (usa GPU)
+  - transform no afecta el flujo del documento
+  - Preferir transform para animaciones
+*/
+
+
+/* ============================================================================
+   5. SECCIÓN HERO
+   ============================================================================
+   Sección principal de bienvenida con título grande.
+*/
+
+.hero {
+  min-height: 60vh;                         /* Altura mínima: 60% de la ventana */
+  display: flex;                            /* Flexbox para centrado */
+  align-items: center;                      /* Centrado vertical */
+  justify-content: center;                  /* Centrado horizontal */
+  text-align: center;                       /* Texto centrado */
+  padding: var(--spacing-3xl) var(--container-padding);  /* Padding generoso */
+  margin-top: 80px;                         /* Compensa altura del header fijo */
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  /* Gradiente diagonal de azul oscuro a azul más claro */
+  position: relative;                       /* Contexto para elementos posicionados */
+  overflow: hidden;                         /* Oculta elementos que salen del contenedor */
+}
+
+/*
+  min-height: 60vh - vh = viewport height (altura de la ventana).
+  100vh = altura completa de la pantalla.
+  Asegura que la sección siempre tenga mínimo 60% de la ventana.
+  
+  margin-top: 80px - Compensa el header fijo.
+  Si el header tiene 80px de alto, el contenido debe empezar 80px más abajo.
+  Alternativa: padding-top en body.
+  
+  linear-gradient() - Gradiente lineal de colores.
+  Sintaxis: linear-gradient(ángulo, color1 inicio%, color2 final%)
+  135deg = diagonal de esquina superior izquierda a inferior derecha.
+  
+  position: relative - Crea contexto de posicionamiento.
+  Los hijos con position: absolute se posicionan relativos a este elemento.
+  
+  overflow: hidden - Contenido que excede dimensiones se oculta.
+  Útil para efectos decorativos que salen del borde.
+*/
+
+.hero__container {
+  max-width: 800px;                         /* Ancho máximo del contenido */
+  margin: 0 auto;                           /* Centrado horizontal */
+  position: relative;                       /* Para z-index si necesario */
+  z-index: 2;                               /* Sobre fondo decorativo */
+}
+
+.hero__breadcrumb {
+  font-size: var(--font-size-xs);           /* 12px - Texto pequeño */
+  font-weight: var(--font-weight-medium);   /* Peso medio */
+  color: var(--color-accent);               /* Dorado */
+  text-transform: uppercase;                /* Mayúsculas */
+  letter-spacing: 2px;                      /* Espaciado amplio */
+  margin-bottom: var(--spacing-sm);         /* Espacio inferior */
+}
+
+/*
+  Breadcrumb (miga de pan) - Indica ubicación en jerarquía del sitio.
+  Nombre proviene del cuento de Hansel y Gretel.
+  Mejora navegación y UX en sitios con múltiples niveles.
+*/
+
+.hero__title {
+  font-size: var(--font-size-4xl);          /* 48px */
+  font-weight: var(--font-weight-bold);     /* Negrita */
+  color: var(--color-text-primary);         /* Blanco */
+  margin-bottom: var(--spacing-md);         /* Espacio inferior */
+  line-height: 1.2;                         /* Líneas compactas */
+}
+
+.hero__description {
+  font-size: var(--font-size-md);           /* 18px */
+  color: var(--color-text-secondary);       /* Gris azulado */
+  max-width: 600px;                         /* Ancho máximo para legibilidad */
+  margin: 0 auto;                           /* Centrado horizontal */
+  line-height: 1.8;                         /* Líneas más espaciadas */
+}
+
+/*
+  max-width: 600px para texto.
+  Líneas de texto muy largas dificultan la lectura.
+  Óptimo: 50-75 caracteres por línea (600-800px a 16px).
+*/
+
+
+/* ============================================================================
+   6. SECCIÓN PRODUCTOS
+   ============================================================================
+   Grid de tarjetas de productos con iconos ilustrativos.
+*/
+
+.productos {
+  padding: var(--spacing-3xl) var(--container-padding);  /* Padding vertical y horizontal */
+  background-color: var(--color-primary);                /* Fondo azul oscuro */
+}
+
+.productos__container {
+  max-width: var(--container-max-width);    /* 1200px máximo */
+  margin: 0 auto;                           /* Centrado horizontal */
+  display: grid;                            /* CSS Grid Layout */
+  grid-template-columns: repeat(3, 1fr);    /* 3 columnas iguales */
+  gap: var(--spacing-lg);                   /* Espacio entre tarjetas */
+}
+
+/*
+  CSS GRID - Sistema de layout bidimensional (filas Y columnas).
+  Más potente que Flexbox para layouts complejos.
+  
+  display: grid - Convierte elemento en contenedor grid.
+  
+  grid-template-columns: Define columnas.
+  Sintaxis: repeat(cantidad, tamaño)
+  repeat(3, 1fr) = 3 columnas de igual tamaño
+  
+  fr (fracción) - Unidad de Grid que representa fracción del espacio disponible.
+  1fr = 1 parte del espacio
+  Si hay 3 columnas de 1fr, cada una ocupa 33.33% del ancho.
+  
+  Alternativas:
+  - repeat(3, 200px) = 3 columnas de 200px fijos
+  - 1fr 2fr 1fr = columna central doble de ancha
+  - auto 1fr auto = laterales ajustan a contenido, centro crece
+  
+  gap: Espacio entre filas y columnas.
+  Alternativas específicas:
+  - column-gap: espacio entre columnas
+  - row-gap: espacio entre filas
+*/
+
+/* === TARJETA DE PRODUCTO === */
+.producto-card {
+  background-color: var(--color-primary-dark);  /* Fondo azul más oscuro */
+  border-radius: var(--border-radius-lg);       /* Esquinas redondeadas */
+  padding: var(--spacing-lg);                   /* Padding interno */
+  position: relative;                           /* Para badge posicionado absolute */
+  display: flex;                                /* Flex para layout vertical */
+  flex-direction: column;                       /* Dirección vertical */
+  gap: var(--spacing-md);                       /* Espacio entre elementos */
+  transition: var(--transition-normal);         /* Transición suave */
+  border: 1px solid transparent;                /* Borde transparente (para hover) */
+}
+
+/*
+  flex-direction: column - Cambia eje principal a vertical.
+  Por defecto flex-direction: row (horizontal).
+  En columna: justify-content controla vertical, align-items horizontal.
+*/
+
+.producto-card:hover {
+  transform: translateY(-5px);                  /* Eleva la tarjeta */
+  box-shadow: var(--shadow-lg);                 /* Sombra pronunciada */
+  border-color: var(--color-accent-dark);       /* Borde dorado */
+}
+
+/*
+  Efecto hover en tarjetas - Feedback visual de interactividad.
+  Transform + box-shadow crea sensación de elevación 3D.
+*/
+
+/* === BADGE === */
+.producto-card__badge {
+  padding: 4px 12px;                          /* Espaciado interno horizontal más amplio */
+  border-radius: var(--border-radius-full);     /* Pill shape (forma de píldora) */
+  box-shadow: var(--shadow-sm);                 /* Sombra sutil */
+  z-index: 10;                                  /* Asegura que el badge esté sobre el contenido */
+}
+
+/* Modificadores de color para los badges */
+.producto-card__badge--popular { background-color: var(--color-badge-popular); }
+.producto-card__badge--especial { background-color: var(--color-badge-especial); color: var(--color-text-primary); }
+.producto-card__badge--nuevo { background-color: var(--color-badge-nuevo); }
+
+.producto-card__icon {
+  height: 120px;                                /* Altura fija para área de icono */
+  display: flex;                                /* Flex para centrar la imagen */
+  align-items: center;                          /* Centrado vertical */
+  justify-content: center;                      /* Centrado horizontal */
+  transition: var(--transition-normal);         /* Transición suave */
+}
+
+.producto-card__image {
+  max-width: 100px;                             /* Tamaño máximo de la ilustración */
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2)); /* Sombra a la ilustración */
+}
+
+.producto-card:hover .producto-card__icon {
+  transform: scale(1.1);                        /* Agranda ligeramente el ícono al pasar mouse */
+}
+
+.producto-card__content {
+  text-align: center;                           /* Texto centrado dentro de la tarjeta */
+}
+
+.producto-card__title {
+  font-size: var(--font-size-lg);               /* 20px */
+  margin-bottom: var(--spacing-sm);             /* 16px abajo */
+}
+
+.producto-card__description {
+  font-size: var(--font-size-sm);               /* 14px */
+  color: var(--color-text-muted);               /* Gris más suave para la descripción */
+  margin-bottom: var(--spacing-md);             /* 24px abajo */
+  min-height: 80px;                             /* Altura mínima para alinear botones */
+}
+
+/*
+  min-height en descripción:
+  Asegura que todas las tarjetas tengan el mismo tamaño de contenido de texto,
+  haciendo que los botones queden perfectamente alineados horizontalmente.
+*/
+
+.producto-card__price {
+  font-weight: var(--font-weight-semibold);     /* Semi-negrita */
+  color: var(--color-accent);                   /* Color dorado */
+  margin-bottom: var(--spacing-md);             /* 24px abajo */
+}
+
+.producto-card__button {
+  display: inline-block;                        /* Permite padding y márgenes */
+  padding: 10px 24px;                           /* Padding del botón */
+  border: 1px solid var(--color-accent);        /* Borde dorado */
+  color: var(--color-accent);                   /* Texto dorado */
+  border-radius: var(--border-radius-md);       /* Esquinas redondeadas 8px */
+  font-size: var(--font-size-xs);               /* 12px */
+  font-weight: var(--font-weight-medium);       /* Peso 500 */
+  letter-spacing: 1px;                          /* Espaciado de letras */
+  transition: var(--transition-normal);         /* Transición suave */
+  width: 100%;                                  /* Botón ancho completo */
+}
+
+.producto-card__button:hover {
+  background-color: var(--color-accent);        /* Fondo dorado en hover */
+  color: var(--color-primary);                  /* Texto oscuro en hover */
+}
+
+
+/* ============================================================================
+   7. SECCIÓN NOSOTROS
+   ============================================================================
+   Sección descriptiva con imagen y texto en dos columnas.
+*/
+
+.nosotros {
+  padding: var(--spacing-3xl) var(--container-padding); /* Padding vertical y lateral */
+  background-color: var(--color-primary-dark);         /* Fondo azul más oscuro */
+}
+
+.nosotros__container {
+  max-width: var(--container-max-width);      /* 1200px */
+  margin: 0 auto;                             /* Centrado */
+  display: grid;                              /* Grid de dos columnas */
+  grid-template-columns: 1fr 1fr;             /* 50% / 50% */
+  gap: var(--spacing-3xl);                    /* Espaciado generoso */
+  align-items: center;                        /* Centrado vertical entre columnas */
+}
+
+.nosotros__image-wrapper {
+  position: relative;                         /* Contexto para el badge absoluto */
+}
+
+.nosotros__image-placeholder {
+  background-color: var(--color-primary-light); /* Fondo para la ilustración */
+  border-radius: var(--border-radius-xl);      /* Esquinas muy redondeadas */
+  padding: var(--spacing-xl);                 /* Espaciado interno */
+  display: flex;                              /* Flex para centrar */
+  justify-content: center;                    /* Centrado horizontal */
+  align-items: center;                        /* Centrado vertical */
+  border: 1px solid var(--color-primary-light); /* Borde sutil */
+}
+
+.nosotros__illustration {
+  max-width: 100%;                            /* Se ajusta al ancho */
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3)); /* Sombra profunda */
+}
+
+.nosotros__badge {
+  position: absolute;                         /* Posicionado sobre la imagen */
+  bottom: -20px;                              /* Sale un poco por debajo */
+  right: -20px;                               /* Sale un poco por la derecha */
+  width: 120px;                               /* Ancho del círculo */
+  height: 120px;                              /* Alto del círculo */
+  background-color: var(--color-accent);      /* Fondo dorado */
+  color: var(--color-primary);                /* Texto oscuro */
+  border-radius: var(--border-radius-full);   /* Círculo perfecto */
+  display: flex;                              /* Flex center */
+  justify-content: center;                    /* Centrado horizontal */
+  align-items: center;                        /* Centrado vertical */
+  text-align: center;                         /* Texto centrado */
+  font-weight: var(--font-weight-bold);       /* Negrita */
+  font-size: var(--font-size-sm);             /* 14px */
+  box-shadow: var(--shadow-lg);               /* Sombra pronunciada */
+  animation: rotate 10s linear infinite;      /* Efecto de rotación suave */
+}
+
+/*
+  Animación para el badge:
+  Hace que el badge 'ARTESANAL' rote lentamente para llamar la atención.
+*/
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.nosotros__content {
+  display: flex;                              /* Flex para layout vertical */
+  flex-direction: column;                     /* Una cosa debajo de otra */
+  gap: var(--spacing-md);                     /* Espaciado entre items */
+}
+
+.nosotros__title--highlight {
+  font-family: 'Playfair Display', serif;     /* Mantiene la fuente serif */
+  color: var(--color-accent);                 /* Resaltado en dorado */
+  font-style: italic;                         /* Italica para más elegancia */
+}
+
+.nosotros__text {
+  font-size: var(--font-size-base);           /* 16px */
+  color: var(--color-text-secondary);         /* Gris azulado claro */
+  line-height: 1.8;                           /* Mayor altura de línea para lectura */
+}
+
+.nosotros__tags {
+  display: flex;                              /* Layout de etiquetas */
+  flex-wrap: wrap;                            /* Permite saltar de línea si no caben */
+  gap: var(--spacing-sm);                     /* Espacio entre etiquetas */
+  margin-top: var(--spacing-md);              /* Margen arriba */
+}
+
+.tag {
+  background-color: rgba(212, 165, 116, 0.1);  /* Fondo dorado muy tenue */
+  color: var(--color-accent);                 /* Texto dorado */
+  padding: 6px 16px;                          /* Espaciado interno */
+  border-radius: var(--border-radius-full);   /* Forma de píldora */
+  font-size: var(--font-size-xs);             /* 12px */
+  font-weight: var(--font-weight-medium);     /* Peso 500 */
+  border: 1px solid rgba(212, 165, 116, 0.2); /* Borde sutil dorado */
+}
+
+
+/* ============================================================================
+   8. SECCIÓN UBICACIÓN
+   ============================================================================
+   Información de contacto y mapa con layout de dos columnas.
+*/
+
+.ubicacion {
+  padding: var(--spacing-3xl) var(--container-padding);
+  background-color: var(--color-primary);
+}
+
+.ubicacion__container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.ubicacion__header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.ubicacion__breadcrumb {
+  font-size: var(--font-size-xs);
+  color: var(--color-accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-xs);
+}
+
+.ubicacion__subtitle {
+  color: var(--color-text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.ubicacion__content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;            /* Info más estrecha que el mapa */
+  gap: var(--spacing-3xl);
+  align-items: start;
+}
+
+.ubicacion__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.info-item {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.info-item__icon {
+  font-size: 1.5rem;
+  background-color: rgba(212, 165, 116, 0.1);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-md);
+  flex-shrink: 0;
+}
+
+.info-item__title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 4px;
+}
+
+.info-item__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: 0;
+}
+
+.social-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.social-link {
+  font-size: var(--font-size-xs);
+  background-color: var(--color-primary-light);
+  padding: 8px 16px;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-normal);
+}
+
+.social-link:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.ubicacion__map {
+  width: 100%;
+}
+
+.map-container {
+  background-color: var(--color-primary-dark);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-primary-light);
+  overflow: hidden;
+}
+
+.map-placeholder {
+  height: 350px;
+  background-color: var(--color-primary-light);
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  position: relative;
+  margin-bottom: var(--spacing-sm);
+}
+
+.map-pin {
+  font-size: 3rem;
+  animation: bounce 2s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.map-button {
+  display: block;
+  text-align: center;
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  transition: var(--transition-normal);
+}
+
+.map-button:hover {
+  background-color: var(--color-accent-light);
+}
+
+
+/* ============================================================================
+   9. FOOTER
+   ============================================================================
+   Pie de página con marca, navegación, productos y contacto.
+*/
+
+.footer {
+  background-color: var(--color-primary-dark);
+  padding: var(--spacing-3xl) var(--container-padding) var(--spacing-lg);
+  border-top: 1px solid var(--color-primary-light);
+}
+
+.footer__container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.footer__logo {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer__tagline {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.footer__title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-primary);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.footer__link {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  transition: var(--transition-fast);
+}
+
+.footer__link:hover {
+  color: var(--color-accent);
+  padding-left: 5px;
+}
+
+.footer__divider {
+  height: 1px;
+  background-color: var(--color-primary-light);
+  margin-bottom: var(--spacing-lg);
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.footer__heart {
+  color: #ff4d4d;
+  display: inline-block;
+  animation: heartBeat 1.5s ease infinite;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  15% { transform: scale(1.2); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+  60% { transform: scale(1); }
+}
+
+
+/* ============================================================================
+   10. UTILIDADES
+   ============================================================================
+   Clases genéricas para ajustes rápidos.
+*/
+
+.no-scroll {
+  overflow: hidden;                           /* Bloquea scroll del body */
+}
+
+.text-center { text-align: center; }
+.text-accent { color: var(--color-accent); }
+
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+
+/* ============================================================================
+   11. MEDIA QUERIES (RESPONSIVE DESIGN)
+   ============================================================================
+   Ajustes para que la web se adapte a diferentes tamaños de pantalla.
+   Usamos una estrategia 'Desktop-First' (de grande a pequeño).
+*/
+
+/* --- TABLETS (Menos de 992px) --- */
+@media (max-width: 992px) {
+  :root {
+    --font-size-4xl: 2.5rem;    /* Reducimos títulos hero */
+    --font-size-3xl: 2rem;
+  }
+
+  .productos__container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en lugar de 3 */
+  }
+
+  .nosotros__container {
+    gap: var(--spacing-xl);
+  }
+
+  .footer__top {
+    grid-template-columns: 1fr 1fr;         /* Footer en 2 filas de 2 columnas */
+  }
+}
+
+/* --- MÓVILES GRANDES / TABLETS PEQUEÑAS (Menos de 768px) --- */
+@media (max-width: 768px) {
+  /* Reajuste de espaciados globales */
+  :root {
+    --spacing-3xl: 4rem;        /* 64px en móvil (antes 96px) */
+    --spacing-2xl: 3rem;
+  }
+
+  /* === NAVEGACIÓN MÓVIL (MENÚ HAMBURGUESA) === */
+  
+  .header__toggle {
+    display: flex;              /* Mostramos el botón en móviles */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    z-index: 1001;              /* Por encima del menú desplegado */
+  }
+
+  .toggle__bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-accent);
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-normal);
+  }
+
+  /* Animación del botón al estar activo (X) */
+  .header__toggle--active .toggle__bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .header__toggle--active .toggle__bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__toggle--active .toggle__bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  .nav__list {
+    position: fixed;
+    top: 0;
+    right: -100%;               /* Oculto a la derecha */
+    width: 80%;                 /* Ocupa el 80% del ancho */
+    height: 100vh;
+    background-color: var(--color-primary-dark);
+    flex-direction: column;     /* Elementos uno debajo de otro */
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xl);
+    transition: var(--transition-normal);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    z-index: 1000;
+  }
+
+  /* Cuando el menú está activo (abierto) */
+  .nav__list--active {
+    right: 0;                   /* Se desliza a la pantalla */
+  }
+
+  .nav__link {
+    font-size: var(--font-size-lg); /* Enlaces más grandes para dedos */
+  }
+
+  /* Ocultamos elementos innecesarios en el header móvil para ganar espacio */
+  .header__nav {
+    justify-content: flex-end;
+  }
+
+  /* === AJUSTES DE SECCIONES === */
+
+  .hero {
+    min-height: 50vh;
+    padding-top: var(--spacing-2xl);
+  }
+
+  /* Todos los grids pasan a 1 sola columna */
+  .productos__container,
+  .nosotros__container,
+  .ubicacion__content,
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  /* Orden visual: imagen primero o texto primero según convenga */
+  .nosotros__image-wrapper {
+    order: -1;                  /* Imagen arriba del texto */
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .nosotros__badge {
+    width: 100px;
+    height: 100px;
+    font-size: var(--font-size-xs);
+  }
+
+  .ubicacion__map {
+    height: 300px;              /* Altura fija para mapa en móvil */
+  }
+
+  .footer__bottom {
+    flex-direction: column;     /* Copyright sobre créditos */
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+}
+
+/* --- MÓVILES PEQUEÑOS (Menos de 480px) --- */
+@media (max-width: 480px) {
+  :root {
+    --font-size-4xl: 2rem;      /* Título hero aún más pequeño */
+    --container-padding: 1.5rem;
+  }
+
+  .logo__text {
+    font-size: var(--font-size-xl);
+  }
+
+  .producto-card {
+    padding: var(--spacing-md);
+  }
+}
+
+/* ============================================================================
+   12. CARRITO DE COMPRAS (SHOPPING CART)
+   ============================================================================
+   Estilos para el bot�n del carrito y el panel lateral.
+*/
+
+/* --- Icono del Carrito en el Header --- */
+.header__cart {
+  position: relative;
+  margin-left: var(--spacing-md);
+}
+
+.cart-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background-color: var(--color-primary-light);
+  border-radius: var(--border-radius-full);
+  transition: var(--transition-normal);
+  position: relative;
+}
+
+.cart-toggle:hover {
+  background-color: var(--color-accent);
+}
+
+.cart-toggle:hover .cart-toggle__icon {
+  transform: scale(1.1);
+}
+
+.cart-toggle__icon {
+  font-size: 1.25rem;
+  transition: var(--transition-normal);
+}
+
+.cart-toggle__count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--color-badge-popular);
+  color: var(--color-primary);
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--color-primary);
+}
+
+/* --- Panel Lateral (Cart Sidebar) --- */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  visibility: hidden; /* Oculto por defecto */
+  transition: visibility var(--transition-normal);
+}
+
+.cart-sidebar--active {
+  visibility: visible;
+}
+
+.cart-sidebar__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.cart-sidebar--active .cart-sidebar__overlay {
+  opacity: 1;
+}
+
+.cart-sidebar__content {
+  position: absolute;
+  top: 0;
+  right: -400px; /* Empezar fuera de pantalla */
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  transition: right var(--transition-normal);
+  padding: var(--spacing-lg);
+}
+
+.cart-sidebar--active .cart-sidebar__content {
+  right: 0; /* Entrar a pantalla */
+}
+
+.cart-sidebar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-primary-light);
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.cart-sidebar__title {
+  font-size: var(--font-size-xl);
+  margin-bottom: 0;
+}
+
+.cart-sidebar__close {
+  font-size: 2rem;
+  color: var(--color-text-muted);
+  transition: var(--transition-fast);
+}
+
+.cart-sidebar__close:hover {
+  color: var(--color-text-primary);
+}
+
+/* --- Items del Carrito --- */
+.cart-sidebar__items {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: var(--spacing-xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* Scrollbar personalizado para el carrito */
+.cart-sidebar__items::-webkit-scrollbar {
+  width: 5px;
+}
+.cart-sidebar__items::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light);
+  border-radius: 10px;
+}
+
+.cart-empty-msg {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+  color: var(--color-text-muted);
+}
+
+.cart-item {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+}
+
+.cart-item__img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.cart-item__info {
+  flex-grow: 1;
+}
+
+.cart-item__name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.cart-item__price {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+}
+
+.cart-item__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.btn-qty {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.btn-qty:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.cart-item__remove {
+  color: #ff4d4d;
+  font-size: 1.25rem;
+  margin-left: var(--spacing-xs);
+}
+
+/* --- Footer del Carrito --- */
+.cart-sidebar__footer {
+  border-top: 1px solid var(--color-primary-light);
+  padding-top: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-md);
+}
+
+#cart-total-price {
+  color: var(--color-accent);
+}
+
+.cart-checkout-btn {
+  width: 100%;
+  padding: var(--spacing-md);
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-normal);
+  font-size: 1rem;
+}
+
+.cart-checkout-btn:hover {
+  background-color: var(--color-accent-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}

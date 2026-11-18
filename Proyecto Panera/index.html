@@ -1,700 +1,351 @@
-
-<!DOCTYPE html>
-<!-- 
-  Declaración DOCTYPE HTML5 - Indica al navegador que este documento usa HTML5.
-  Es obligatoria y debe ser la primera línea del documento.
--->
+<!doctype html>
 <html lang="es">
-<!-- 
-  Elemento raíz del documento HTML.
-  lang="es": Atributo que define el idioma español para accesibilidad y SEO.
-  Los lectores de pantalla usan esto para pronunciar correctamente el contenido.
--->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a1628" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="apple-touch-icon" href="images/favicon.png" />
+    <meta
+      name="description"
+      content="Panera's - Panadería y pastelería artesanal. Calidad y frescura en cada producto."
+    />
+    <title>Panera's | Panadería y Pastelería Artesanal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
 
-<head>
-  <!-- 
-    SECCIÓN HEAD: Contiene metadatos y recursos que no se muestran directamente.
-    Información esencial para navegadores, motores de búsqueda y optimización.
-  -->
-  
-  <meta charset="UTF-8">
-  <!-- 
-    Define la codificación de caracteres UTF-8.
-    Permite mostrar correctamente caracteres especiales (ñ, tildes, símbolos).
-    SIEMPRE debe ser la primera meta etiqueta.
-  -->
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 
-    CRUCIAL para diseño responsivo.
-    width=device-width: El ancho de la página coincide con el ancho de la pantalla.
-    initial-scale=1.0: Nivel de zoom inicial al 100%.
-    Sin esto, los sitios se ven mal en móviles.
-  -->
-  
-  <meta name="description" content="Panera's - Panadería y pastelería artesanal. Calidad y frescura en cada producto. Pan artesanal, pasteles y tortas especiales elaborados con amor y harina fresca.">
-  <!-- 
-    Descripción para motores de búsqueda (SEO).
-    Aparece en resultados de Google. Máximo 155-160 caracteres recomendados.
-  -->
-  
-  <meta name="keywords" content="Panera's, panadería artesanal, pastelería, pan fresco, tortas personalizadas, productos artesanales">
-  <!-- 
-    Palabras clave para SEO (menos importante actualmente, pero útil).
-  -->
-  
-  <title>Panera's | Panadería y Pastelería Artesanal</title>
-  <!-- 
-    Título que aparece en la pestaña del navegador y en resultados de búsqueda.
-    CRÍTICO para SEO. Debe ser descriptivo y único (50-60 caracteres ideal).
-  -->
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- 
-    Importación de fuentes de Google Fonts.
-    preconnect: Optimiza la conexión anticipada al servidor de fuentes.
-    Playfair Display: Fuente serif elegante para títulos/logo.
-    Poppins: Fuente sans-serif moderna para cuerpo de texto.
-    display=swap: Muestra texto con fuente del sistema mientras carga la web font.
-  -->
-  
-  <link rel="stylesheet" href="style.css">
-  <!-- 
-    Vincula la hoja de estilos CSS externa.
-    rel="stylesheet": Define la relación como hoja de estilos.
-    href: Ruta al archivo CSS (mismo directorio en este caso).
-  -->
-</head>
+  <body>
+    <header class="header">
+      <div class="header__container">
+        <a href="index.html" class="header__logo">
+          <img src="images/logo.jpeg" alt="" class="header__logo-img" />
+          <span class="logo__text">Panera's</span>
+        </a>
 
-<body>
-  <!-- 
-    ELEMENTO BODY: Contiene TODO el contenido visible de la página.
-    Solo puede haber un elemento body por documento.
-  -->
+        <input
+          type="checkbox"
+          id="menu-toggle"
+          class="header__checkbox"
+          aria-controls="menu-principal"
+        />
+        <label for="menu-toggle" class="header__toggle">Menú</label>
 
-  <!-- ========== SECCIÓN 1: ENCABEZADO (HEADER) ========== -->
-  <header class="header">
-    <!-- 
-      Etiqueta semántica HEADER: Representa contenido introductorio o navegacional.
-      Típicamente contiene logo, navegación y herramientas principales.
-      class="header": Clase CSS para aplicar estilos específicos.
-    -->
-    
-    <div class="header__container">
-      <!-- 
-        DIV contenedor: Agrupa elementos relacionados sin significado semántico específico.
-        Usamos nomenclatura BEM (Block Element Modifier):
-        header__container = elemento "container" dentro del bloque "header".
-        BEM facilita mantenimiento y escalabilidad del CSS.
-      -->
-      
-      <div class="header__logo">
-        <!-- Contenedor del logotipo de la panadería -->
-        <h1 class="logo__text">Panera's</h1>
-        <!-- 
-          H1: Encabezado de nivel 1 - El más importante semánticamente.
-          Solo DEBE haber UN h1 por página para SEO y accesibilidad.
-          Representa el tema principal del sitio.
-          Basado en el diseño: fuente script elegante.
-        -->
-      </div>
-
-      <button class="header__toggle" id="menu-toggle" aria-label="Abrir menú">
-        <span class="toggle__bar"></span>
-        <span class="toggle__bar"></span>
-        <span class="toggle__bar"></span>
-      </button>
-      <!-- 
-        Botón de Menú Hamburguesa:
-        Visible solo en dispositivos móviles.
-        Contiene 3 barras que se transformarán en una 'X' al abrirse.
-        aria-label: Mejora la accesibilidad para lectores de pantalla.
-      -->
-
-      <nav class="header__nav">
-        <!-- 
-          NAV: Etiqueta semántica para navegación principal.
-          Indica a navegadores y lectores de pantalla que esto es un menú.
-          Mejora accesibilidad permitiendo saltar directamente al contenido.
-        -->
-        
-        <ul class="nav__list">
-          <!-- 
-            UL: Lista no ordenada (Unordered List).
-            Usado para menús porque representa elementos sin jerarquía numérica.
-            Estructuralmente correcto para navegación.
-          -->
-          
-          <li class="nav__item">
-            <!-- LI: Elemento de lista (List Item) -->
-            <a href="#principal" class="nav__link nav__link--active">PRINCIPAL</a>
-            <!-- 
-              A: Ancla/enlace.
-              href="#principal": Navega a la sección con id="principal".
-              nav__link--active: Modificador BEM que indica el enlace activo actual.
-              Permite destacar visualmente la página/sección actual.
-            -->
-          </li>
-          <li class="nav__item">
-            <a href="#productos" class="nav__link">PRODUCTOS</a>
-          </li>
-          <li class="nav__item">
-            <a href="#nosotros" class="nav__link">QUIÉNES SOMOS</a>
-          </li>
-          <li class="nav__item">
-            <a href="#ubicacion" class="nav__link">UBICACIÓN</a>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- BOTÓN DEL CARRITO: Icono con contador para abrir el panel lateral -->
-      <div class="header__cart">
-        <button class="cart-toggle" id="cart-toggle" aria-label="Ver carrito">
-          <span class="cart-toggle__icon">🛒</span>
-          <span class="cart-toggle__count" id="cart-count">0</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- ========== SECCIÓN 2: CONTENIDO PRINCIPAL ========== -->
-  <main class="main">
-    <!-- 
-      MAIN: Etiqueta semántica para el contenido principal.
-      Solo DEBE haber UN main por página.
-      No incluir header, footer, nav, aside repetidos del sitio.
-      Crucial para accesibilidad: los lectores de pantalla pueden saltar directamente aquí.
-    -->
-
-    <!-- ========== SECCIÓN PRINCIPAL/HERO ========== -->
-    <section id="principal" class="hero">
-      <!-- 
-        SECTION: Agrupa contenido temático relacionado.
-        id="principal": Permite navegación desde el menú (#principal).
-        Los IDs DEBEN ser únicos en toda la página.
-        Basado en imagen 5: sección hero con título grande y descripción.
-      -->
-      
-      <div class="hero__container">
-        <p class="hero__breadcrumb">NUESTROS PRODUCTOS</p>
-        <!-- 
-          Breadcrumb: Miga de pan, indica ubicación en la jerarquía del sitio.
-          Visible en la imagen 5 como texto pequeño sobre el título.
-        -->
-        
-        <h2 class="hero__title">Horneado con amor, cada día.</h2>
-        <!-- 
-          H2: Encabezado de nivel 2.
-          Jerarquía correcta: h1 > h2 > h3 > h4 > h5 > h6.
-          No saltarse niveles para accesibilidad y SEO.
-          Basado en diseño: tipografía serif elegante.
-        -->
-        
-        <p class="hero__description">
-          Elaboramos nuestros productos artesanalmente cada mañana para 
-          garantizar la frescura que mereces.
-        </p>
-        <!-- 
-          P: Párrafo de texto.
-          Etiqueta básica pero esencial para contenido textual.
-          Mantiene semántica clara del documento.
-        -->
-      </div>
-    </section>
-
-    <!-- ========== SECCIÓN 3: PRODUCTOS ========== -->
-    <section id="productos" class="productos">
-      <!-- 
-        Sección basada en imagen 4: grid de productos con tarjetas.
-        Cada producto tiene icono ilustrativo, nombre, descripción y precio.
-      -->
-      
-      <div class="productos__container">
-        <!-- Contenedor para aplicar ancho máximo y centrado -->
-
-        <!-- Producto 1: Pan Artesanal -->
-        <article class="producto-card">
-          <!-- 
-            ARTICLE: Contenido independiente y auto-contenido.
-            Puede ser sindicado/reutilizado independientemente.
-            Apropiado para posts, productos, comentarios.
-            Cada producto es una unidad independiente = article.
-          -->
-          
-          <div class="producto-card__badge producto-card__badge--popular">POPULAR</div>
-          <!-- 
-            Badge basado en imagen 5: etiqueta circular/pill amarilla.
-            Modificador --popular para el badge de "Popular".
-          -->
-          
-          <div class="producto-card__icon">
-            <img src="icon-pan-artesanal.png" alt="Ilustración de rebanada de pan artesanal" class="producto-card__image">
-            <!-- 
-              IMG: Elemento de imagen.
-              src: Fuente/ruta de la imagen (ícono ilustrativo del producto).
-              alt: CRÍTICO para accesibilidad. Describe la imagen para:
-                - Lectores de pantalla (usuarios con discapacidad visual)
-                - Cuando la imagen no carga
-                - SEO de imágenes
-              Debe ser descriptivo del contenido visual, no genérico.
-            -->
-          </div>
-          
-          <div class="producto-card__content">
-            <h3 class="producto-card__title">Pan Canilla</h3>
-            <!-- 
-              H3: Subtítulo dentro de la sección.
-              Mantiene jerarquía: section > article > h3.
-            -->
-            
-            <p class="producto-card__description">
-              Elaborado con ingredientes naturales y masa madre, nuestro pan 
-              canilla ofrece sabor y textura únicos en cada mordisco.
-            </p>
-            
-            <p class="producto-card__price">$1.00</p>
-            <!-- Precio actualizado para el carrito -->
-            
-            <button class="producto-card__button add-to-cart" 
-                    data-id="1" 
-                    data-nombre="Pan Canilla" 
-                    data-precio="1.10" 
-                    data-imagen="icon-pan-artesanal.png">
-              AÑADIR AL CARRITO
-            </button>
-            <!-- 
-              Botón de añadir al carrito:
-              data-attributes: Permiten guardar información del producto directamente 
-              en el HTML para que JavaScript pueda leerla fácilmente.
-            -->
-          </div>
-        </article>
-
-        <!-- Producto 2: Croissant Clásico -->
-        <article class="producto-card">
-          <div class="producto-card__icon">
-            <img src="icon-croissant.png" alt="Ilustración de croissant dorado" class="producto-card__image">
-          </div>
-          
-          <div class="producto-card__content">
-            <h3 class="producto-card__title">Croissant Clásico</h3>
-            <p class="producto-card__description">
-              Hojaldrado perfecto con mantequilla francesa. Crujiente por fuera 
-              y suave en el interior, ideal para desayunar.
-            </p>
-            <p class="producto-card__price">$2.75</p>
-            <button class="producto-card__button add-to-cart" 
-                    data-id="2" 
-                    data-nombre="Croissant Clásico" 
-                    data-precio="2.75" 
-                    data-imagen="icon-croissant.png">
-              AÑADIR AL CARRITO
-            </button>
-          </div>
-        </article>
-
-        <!-- Producto 3: Tortas Personalizadas -->
-        <article class="producto-card">
-          <div class="producto-card__badge producto-card__badge--especial">ESPECIAL</div>
-          <!-- Badge "ESPECIAL" como en imagen 4 -->
-          
-          <div class="producto-card__icon">
-            <img src="icon-torta.png" alt="Ilustración de torta de cumpleaños" class="producto-card__image">
-          </div>
-          
-          <div class="producto-card__content">
-            <h3 class="producto-card__title">Tortas Personalizadas</h3>
-            <p class="producto-card__description">
-              Creamos la torta perfecta para tu celebración. Diseños únicos 
-              adaptados a tus gustos y necesidades.
-            </p>
-            <p class="producto-card__price">$25.00</p>
-            <button class="producto-card__button add-to-cart" 
-                    data-id="3" 
-                    data-nombre="Tortas Personalizadas" 
-                    data-precio="25.00" 
-                    data-imagen="icon-torta.png">
-              AÑADIR AL CARRITO
-            </button>
-          </div>
-        </article>
-
-        <!-- Producto 4: Cupcakes -->
-        <article class="producto-card">
-          <div class="producto-card__icon">
-            <img src="icon-cupcake.png" alt="Ilustración de cupcake con frosting" class="producto-card__image">
-          </div>
-          
-          <div class="producto-card__content">
-            <h3 class="producto-card__title">Cupcakes</h3>
-            <p class="producto-card__description">
-              Deliciosos cupcakes en variedad de sabores con decoraciones 
-              artísticas. Perfectos para cualquier ocasión.
-            </p>
-            <p class="producto-card__price">$3.50</p>
-            <button class="producto-card__button add-to-cart" 
-                    data-id="4" 
-                    data-nombre="Cupcakes" 
-                    data-precio="3.50" 
-                    data-imagen="icon-cupcake.png">
-              AÑADIR AL CARRITO
-            </button>
-          </div>
-        </article>
-
-        <!-- Producto 5: Baguette Francesa -->
-        <article class="producto-card">
-          <div class="producto-card__icon">
-            <img src="icon-baguette.png" alt="Ilustración de baguette francesa" class="producto-card__image">
-          </div>
-          
-          <div class="producto-card__content">
-            <h3 class="producto-card__title">Baguette Francesa</h3>
-            <p class="producto-card__description">
-              Auténtica receta francesa con corteza crujiente dorada. 
-              Perfecta para acompañar tus comidas.
-            </p>
-            <p class="producto-card__price">$3.00</p>
-            <button class="producto-card__button add-to-cart" 
-                    data-id="5" 
-                    data-nombre="Baguette Francesa" 
-                    data-precio="3.00" 
-                    data-imagen="icon-baguette.png">
-              AÑADIR AL CARRITO
-            </button>
-          </div>
-        </article>
-
-        <!-- Producto 6: Cheesecake del Día -->
-        <article class="producto-card">
-          <div class="producto-card__badge producto-card__badge--nuevo">NUEVO</div>
-          <!-- Badge "NUEVO" como en imagen 4 -->
-          
-          <div class="producto-card__icon">
-            <img src="icon-cheesecake.png" alt="Ilustración de porción de cheesecake" class="producto-card__image">
-          </div>
-          
-          <div class="producto-card__content">
-            <h3 class="producto-card__title">Cheesecake del Día</h3>
-            <p class="producto-card__description">
-              Suave y cremoso cheesecake con sabores rotativos. 
-              Pregunta por el sabor de hoy.
-            </p>
-            <p class="producto-card__price">$4.50</p>
-            <button class="producto-card__button add-to-cart" 
-                    data-id="6" 
-                    data-nombre="Cheesecake del Día" 
-                    data-precio="4.50" 
-                    data-imagen="icon-cheesecake.png">
-              AÑADIR AL CARRITO
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ========== SECCIÓN 4: QUIÉNES SOMOS ========== -->
-    <section id="nosotros" class="nosotros">
-      <!-- 
-        Basada en imagen 3: layout de dos columnas.
-        Izquierda: imagen/ilustración con badge circular.
-        Derecha: texto descriptivo con tags/pills.
-      -->
-      
-      <div class="nosotros__container">
-        <div class="nosotros__image-wrapper">
-          <!-- Contenedor de imagen/ilustración -->
-          <div class="nosotros__image-placeholder">
-            <img src="illustration-bread.png" alt="Ilustración estilizada de baguette artesanal" class="nosotros__illustration">
-          </div>
-          
-          <div class="nosotros__badge">
-            <!-- Badge circular "100% ARTESANAL" como en imagen 3 -->
-            <span class="badge__text">100%<br>ARTESANAL</span>
-            <!-- 
-              BR: Salto de línea (Break).
-              Usado aquí porque el badge tiene texto en dos líneas.
-              Uso apropiado para texto corto con formato específico.
-            -->
-          </div>
-        </div>
-
-        <div class="nosotros__content">
-          <h2 class="nosotros__title">
-            Más que una panadería, <span class="nosotros__title--highlight">un lugar de encuentro</span>
-          </h2>
-          <!-- 
-            SPAN: Contenedor en línea sin significado semántico.
-            Útil para aplicar estilos a porciones de texto.
-            Aquí: resaltar parte del título con color dorado/script.
-          -->
-          
-          <p class="nosotros__text">
-            Desde nuestros inicios, hemos cultivado más que masa madre: cultivamos 
-            vínculos con nuestra comunidad. Creemos en el amor por el pan bien hecho, 
-            en ingredientes frescos y naturales, y en respetar los tiempos de 
-            fermentación que cada receta merece.
-          </p>
-          
-          <p class="nosotros__text">
-            Cada pieza que sale de nuestro horno lleva el cuidado de manos expertas 
-            y la pasión de generaciones dedicadas al arte de la panadería. Porque 
-            sabemos que el verdadero sabor se construye con tiempo, paciencia y amor.
-          </p>
-
-          <div class="nosotros__tags">
-            <!-- 
-              Tags/pills como en imagen 3.
-              Representan valores clave de la panadería.
-            -->
-            <span class="tag">♦ Ingredientes frescos</span>
-            <span class="tag">♦ Recetas artesanales</span>
-            <span class="tag">♦ Horneado diario</span>
-            <span class="tag">♦ Con amor familiar</span>
-            <!-- 
-              ♦ Símbolo de diamante como en el diseño original.
-              Alternativa Unicode: ◆ o usar íconos de fuentes.
-            -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== SECCIÓN 5: UBICACIÓN ========== -->
-    <section id="ubicacion" class="ubicacion">
-      <!-- 
-        Basada en imagen 2: layout dos columnas.
-        Izquierda: información de contacto con íconos.
-        Derecha: mapa interactivo con botón.
-      -->
-      
-      <div class="ubicacion__container">
-        <div class="ubicacion__header">
-          <p class="ubicacion__breadcrumb">DÓNDE ENCONTRARNOS</p>
-          <h2 class="ubicacion__title">Visítanos</h2>
-          <p class="ubicacion__subtitle">
-            Te esperamos con el pan recién salido del horno y el café listo.
-          </p>
-        </div>
-
-        <div class="ubicacion__content">
-          <div class="ubicacion__info">
-            <!-- Columna izquierda: información de contacto -->
-            
-            <div class="info-item">
-              <div class="info-item__icon">📍</div>
-              <!-- 
-                Emoji como ícono visual.
-                Alternativa profesional: usar fuentes de íconos como Font Awesome.
-                Para producción: considerar compatibilidad entre navegadores.
-              -->
-              
-              <div class="info-item__content">
-                <h3 class="info-item__title">Dirección</h3>
-                <p class="info-item__text">
-                  Calle Principal #123<br>
-                  Tu Ciudad, País
-                </p>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-item__icon">🕐</div>
-              <div class="info-item__content">
-                <h3 class="info-item__title">Horario de atención</h3>
-                <p class="info-item__text">
-                  <strong>Lunes — Viernes:</strong> 6:00 am — 8:00 pm<br>
-                  <strong>Sábados y Domingos:</strong> 6:00 am — 2:00 pm
-                </p>
-                <!-- 
-                  STRONG: Importancia/énfasis fuerte.
-                  Semánticamente indica importancia (diferente de <b> que solo es negrita visual).
-                  Usado aquí para días de la semana que son clave informativa.
-                -->
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-item__icon">📞</div>
-              <div class="info-item__content">
-                <h3 class="info-item__title">Teléfono / WhatsApp</h3>
-                <p class="info-item__text">
-                  <a href="tel:+000000000000" class="info-item__link">+00 000 000 0000</a>
-                </p>
-                <!-- 
-                  tel: protocolo para números de teléfono.
-                  Al hacer clic en móviles, abre el marcador con el número.
-                  Mejora experiencia de usuario en dispositivos táctiles.
-                -->
-              </div>
-            </div>
-
-            <div class="info-item">
-              <h3 class="info-item__title">Redes sociales</h3>
-              <div class="social-links">
-                <a href="https://wa.me/000000000000" target="_blank" rel="noopener noreferrer" class="social-link">WhatsApp</a>
-                <a href="https://instagram.com/paneras" target="_blank" rel="noopener noreferrer" class="social-link">Instagram</a>
-                <a href="https://facebook.com/paneras" target="_blank" rel="noopener noreferrer" class="social-link">Facebook</a>
-              </div>
-              <!-- 
-                target="_blank": Abre en nueva pestaña.
-                rel="noopener noreferrer": SEGURIDAD CRÍTICA.
-                  - noopener: Previene acceso al window.opener (vulnerabilidad de seguridad)
-                  - noreferrer: No envía información de página de referencia
-                Siempre usar JUNTOS con target="_blank".
-                Protege contra ataques de phishing y acceso no autorizado.
-              -->
-            </div>
-          </div>
-
-          <div class="ubicacion__map">
-            <!-- Columna derecha: mapa -->
-            <div class="map-container">
-              <div class="map-placeholder">
-                <!-- 
-                  Placeholder para mapa embebido.
-                  En producción real: usar iframe de Google Maps.
-                  Ejemplo:
-                  <iframe src="https://www.google.com/maps/embed?pb=..." 
-                          width="600" height="450" 
-                          style="border:0;" 
-                          allowfullscreen="" 
-                          loading="lazy">
-                  </iframe>
-                -->
-                <div class="map-pin">📍</div>
-                <p class="map-label">Panera's — Tu Ciudad</p>
-              </div>
-              
-              <a href="https://maps.app.goo.gl/e5KPZiz4AhXhAvXV7?g_st=it" target="_blank" rel="noopener noreferrer" class="map-button">
-                ABRIR EN GOOGLE MAPS
-              </a>
-              <!-- Botón para abrir mapa en aplicación externa -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ========== PIE DE PÁGINA (FOOTER) ========== -->
-  <footer class="footer">
-    <!-- 
-      FOOTER: Información de cierre/pie de página.
-      Típicamente contiene copyright, enlaces legales, info de contacto.
-      Basado en imagen 1: tres columnas con secciones, productos, contacto.
-    -->
-    
-    <div class="footer__container">
-      <div class="footer__top">
-        <div class="footer__brand">
-          <h3 class="footer__logo">Panera's</h3>
-          <!-- Logo/marca en el footer -->
-          <p class="footer__tagline">
-            Calidad y Frescura en cada producto.<br>
-            Panadería y Pastelería Artesanal.
-          </p>
-        </div>
-
-        <div class="footer__section">
-          <h4 class="footer__title">SECCIONES</h4>
-          <!-- 
-            H4: Título de subsección en el footer.
-            Mantiene jerarquía semántica correcta.
-          -->
-          <ul class="footer__links">
-            <!-- 
-              Lista no ordenada para enlaces de navegación.
-              Estructura semántica apropiada.
-            -->
-            <li><a href="#principal" class="footer__link">Principal</a></li>
-            <li><a href="#productos" class="footer__link">Productos</a></li>
-            <li><a href="#nosotros" class="footer__link">Quiénes Somos</a></li>
-            <li><a href="#ubicacion" class="footer__link">Ubicación</a></li>
+        <nav id="menu-principal" class="header__nav" aria-label="Principal">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="index.html" class="nav__link" aria-current="page"
+                >INICIO</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="pages/productos.html" class="nav__link">PRODUCTOS</a>
+            </li>
+            <li class="nav__item">
+              <a href="pages/servicios.html" class="nav__link">SERVICIOS</a>
+            </li>
+            <li class="nav__item">
+              <a href="pages/acerca.html" class="nav__link">QUIÉNES SOMOS</a>
+            </li>
+            <li class="nav__item">
+              <a href="pages/contacto.html" class="nav__link">UBICACIÓN</a>
+            </li>
           </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero__container">
+          <p class="hero__breadcrumb">PANADERÍA Y PASTELERÍA ARTESANAL</p>
+          <h1 class="hero__title">Horneado con amor, cada día.</h1>
+          <p class="hero__description">
+            Elaboramos nuestros productos artesanalmente cada mañana para
+            garantizar la frescura que mereces.
+          </p>
+          <div class="hero__actions">
+            <a href="pages/productos.html" class="btn btn--primary"
+              >Ver Productos</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-carrusel">
+        <div class="productos__container">
+          <div class="seccion-carrusel__header">
+            <p class="productos__breadcrumb">NUESTRA VITRINA</p>
+            <h2 class="productos__title">Especialidades recién horneadas</h2>
+            <p class="productos__subtitle">
+              Desliza para ver más especialidades.
+            </p>
+          </div>
+
+          <section
+            class="carrusel-hero"
+            tabindex="0"
+            aria-label="Especialidades recién horneadas"
+          >
+            <div class="carrusel-hero__slide">
+              <img
+                src="images/panes-salados/pan-campesino-01.webp"
+                alt="Pan campesino"
+                class="carrusel-hero__image"
+              />
+              <div class="carrusel-hero__info">
+                <span class="carrusel-hero__badge">ARTESANAL</span>
+                <h3 class="carrusel-hero__title">Pan campesino</h3>
+                <p class="carrusel-hero__desc">
+                  Hogaza redonda rústica con harina y fermentación tradicional.
+                </p>
+                <a href="pages/productos.html#panes" class="btn btn--primary"
+                  >Ver en Catálogo</a
+                >
+              </div>
+            </div>
+
+            <div class="carrusel-hero__slide">
+              <img
+                src="images/panes-dulces/pan-de-frutas-01.webp"
+                alt="Pan de frutas"
+                class="carrusel-hero__image"
+              />
+              <div class="carrusel-hero__info">
+                <span class="carrusel-hero__badge">DULCE</span>
+                <h3 class="carrusel-hero__title">Pan de frutas</h3>
+                <p class="carrusel-hero__desc">
+                  Trenzado con frutas confitadas y azúcar.
+                </p>
+                <a
+                  href="pages/productos.html#panes-dulces"
+                  class="btn btn--primary"
+                  >Ver en Catálogo</a
+                >
+              </div>
+            </div>
+
+            <div class="carrusel-hero__slide">
+              <img
+                src="images/tortas/torta-de-chocolate-01.webp"
+                alt="Torta de chocolate"
+                class="carrusel-hero__image"
+              />
+              <div class="carrusel-hero__info">
+                <span class="carrusel-hero__badge">ESPECIAL</span>
+                <h3 class="carrusel-hero__title">Torta de chocolate</h3>
+                <p class="carrusel-hero__desc">
+                  Porción húmeda cubierta de chocolate.
+                </p>
+                <a href="pages/productos.html#tortas" class="btn btn--primary"
+                  >Ver en Catálogo</a
+                >
+              </div>
+            </div>
+
+            <div class="carrusel-hero__slide">
+              <img
+                src="images/panes-dulces/pan-de-queso-con-guayaba-01.webp"
+                alt="Pan de queso con guayaba"
+                class="carrusel-hero__image"
+              />
+              <div class="carrusel-hero__info">
+                <span class="carrusel-hero__badge">COMBINADO</span>
+                <h3 class="carrusel-hero__title">Pan de queso con guayaba</h3>
+                <p class="carrusel-hero__desc">
+                  Pan trenzado de queso relleno de guayaba.
+                </p>
+                <a
+                  href="pages/productos.html#panes-dulces"
+                  class="btn btn--primary"
+                  >Ver en Catálogo</a
+                >
+              </div>
+            </div>
+
+            <div class="carrusel-hero__slide">
+              <img
+                src="images/panes-salados/pan-canilla-01.webp"
+                alt="Pan canilla"
+                class="carrusel-hero__image"
+              />
+              <div class="carrusel-hero__info">
+                <span class="carrusel-hero__badge">POPULAR</span>
+                <h3 class="carrusel-hero__title">Pan canilla</h3>
+                <p class="carrusel-hero__desc">
+                  Clásicas barras crujientes recién horneadas.
+                </p>
+                <a
+                  href="pages/productos.html#panes-salados"
+                  class="btn btn--primary"
+                  >Ver en Catálogo</a
+                >
+              </div>
+            </div>
+
+            <div class="carrusel-hero__slide">
+              <img
+                src="images/pasteleria/dona-con-chocolate-01.webp"
+                alt="Dona con chocolate"
+                class="carrusel-hero__image"
+              />
+              <div class="carrusel-hero__info">
+                <span class="carrusel-hero__badge">NUEVO</span>
+                <h3 class="carrusel-hero__title">Dona con chocolate</h3>
+                <p class="carrusel-hero__desc">
+                  Dona con cobertura de chocolate y granas.
+                </p>
+                <a
+                  href="pages/productos.html#pasteleria"
+                  class="btn btn--primary"
+                  >Ver en Catálogo</a
+                >
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="productos">
+        <div class="productos__container">
+          <div class="seccion-carrusel__header">
+            <p class="productos__breadcrumb">EXPLORA PANERA'S</p>
+            <h2 class="productos__title">Descubre nuestras secciones</h2>
+          </div>
+
+          <div class="servicios-grid">
+            <article class="servicio-card">
+              <div class="servicio-card__icon">🥖</div>
+              <h3 class="servicio-card__title">Nuestros Productos</h3>
+              <p class="servicio-card__text">
+                Panes dulces, salados, tortas y pastelería fina elaborados cada
+                mañana con ingredientes naturales.
+              </p>
+              <a href="pages/productos.html" class="btn btn--primary"
+                >Ver Catálogo</a
+              >
+            </article>
+
+            <article class="servicio-card">
+              <div class="servicio-card__icon">🍰</div>
+              <h3 class="servicio-card__title">Nuestros Servicios</h3>
+              <p class="servicio-card__text">
+                Panadería artesanal, tortas para eventos, pastelería y pedidos
+                especiales al mayor y detal.
+              </p>
+              <a href="pages/servicios.html" class="btn btn--primary"
+                >Ver Servicios</a
+              >
+            </article>
+
+            <article class="servicio-card">
+              <div class="servicio-card__icon">📍</div>
+              <h3 class="servicio-card__title">Ubicación y Contacto</h3>
+              <p class="servicio-card__text">
+                Visítanos en nuestra panadería con café listo y pan recién
+                horneado. Consulta horarios y mapa.
+              </p>
+              <a href="pages/contacto.html" class="btn btn--primary"
+                >Cómo Llegar</a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <h3 class="footer__logo">Panera's</h3>
+            <p class="footer__tagline">
+              Calidad y Frescura en cada producto.<br />Panadería y Pastelería
+              Artesanal.
+            </p>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__title">PÁGINAS</h4>
+            <ul class="footer__links">
+              <li><a href="index.html" class="footer__link">Inicio</a></li>
+              <li>
+                <a href="pages/productos.html" class="footer__link"
+                  >Productos</a
+                >
+              </li>
+              <li>
+                <a href="pages/servicios.html" class="footer__link"
+                  >Servicios</a
+                >
+              </li>
+              <li>
+                <a href="pages/acerca.html" class="footer__link"
+                  >Quiénes Somos</a
+                >
+              </li>
+              <li>
+                <a href="pages/contacto.html" class="footer__link">Ubicación</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__title">PRODUCTOS</h4>
+            <ul class="footer__links">
+              <li>
+                <a href="pages/productos.html#panes" class="footer__link"
+                  >Panes</a
+                >
+              </li>
+              <li>
+                <a href="pages/productos.html#tortas" class="footer__link"
+                  >Tortas</a
+                >
+              </li>
+              <li>
+                <a href="pages/productos.html#pasteleria" class="footer__link"
+                  >Pastelería</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__title">CONTACTOS</h4>
+            <ul class="footer__links">
+              <li>
+                <a href="https://wa.me/+584228507289" class="footer__link"
+                  >WhatsApp</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/panerasca"
+                  class="footer__link"
+                  >Instagram</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="footer__section">
-          <h4 class="footer__title">PRODUCTOS</h4>
-          <ul class="footer__links">
-            <li><a href="#productos" class="footer__link">Panadería</a></li>
-            <li><a href="#productos" class="footer__link">Pastelería</a></li>
-            <li><a href="#productos" class="footer__link">Tortas Especiales</a></li>
-            <li><a href="#productos" class="footer__link">Pedidos</a></li>
-          </ul>
-        </div>
+        <div class="footer__divider"></div>
 
-        <div class="footer__section">
-          <h4 class="footer__title">CONTACTO</h4>
-          <ul class="footer__links">
-            <li><a href="https://wa.me/000000000000" class="footer__link">WhatsApp</a></li>
-            <li><a href="https://instagram.com" class="footer__link">Instagram</a></li>
-            <li><a href="https://facebook.com" class="footer__link">Facebook</a></li>
-          </ul>
+        <div class="footer__bottom">
+          <p class="footer__copyright">
+            &copy; 2025 Panera's. Todos los derechos reservados.
+          </p>
+          <p class="footer__credit">
+            Hecho con <span class="footer__heart">♥</span> y harina fresca.
+          </p>
         </div>
       </div>
-
-      <div class="footer__divider"></div>
-      <!-- 
-        Línea divisoria horizontal.
-        Separación visual entre contenido principal del footer y copyright.
-      -->
-
-      <div class="footer__bottom">
-        <p class="footer__copyright">
-          &copy; 2025 Panera's. Todos los derechos reservados.
-        </p>
-        <!-- 
-          &copy; Entidad HTML para el símbolo ©.
-          Alternativa: usar directamente © en UTF-8.
-          Las entidades HTML garantizan compatibilidad universal.
-        -->
-        
-        <p class="footer__credit">
-          Hecho con <span class="footer__heart">♥</span> y harina fresca.
-        </p>
-        <!-- Mensaje personalizado como en imagen 1 -->
-      </div>
-    </div>
-  </footer>
-
-  <!-- ========== CARRITO LATERAL (SIDEBAR) ========== -->
-  <aside class="cart-sidebar" id="cart-sidebar">
-    <!-- Overlay para cerrar el carrito al hacer clic fuera -->
-    <div class="cart-sidebar__overlay" id="cart-overlay"></div>
-    
-    <div class="cart-sidebar__content">
-      <div class="cart-sidebar__header">
-        <h2 class="cart-sidebar__title">Tu Carrito</h2>
-        <button class="cart-sidebar__close" id="cart-close">&times;</button>
-      </div>
-
-      <!-- Lista de productos añadidos (se llena con JS) -->
-      <div class="cart-sidebar__items" id="cart-items">
-        <!-- Aquí aparecerán los productos dinámicamente -->
-        <p class="cart-empty-msg">Tu carrito está vacío</p>
-      </div>
-
-      <div class="cart-sidebar__footer">
-        <div class="cart-total">
-          <span>Total:</span>
-          <span id="cart-total-price">$0.00</span>
-        </div>
-        <button class="cart-checkout-btn" id="checkout-btn">
-          PEDIR POR WHATSAPP 📱
-        </button>
-      </div>
-    </div>
-  </aside>
-
-  <!-- ========== SCRIPTS DE FUNCIONALIDAD ========== -->
-  <script src="script.js"></script>
-
-</body>
+    </footer>
+  </body>
 </html>
-```
-
----
-

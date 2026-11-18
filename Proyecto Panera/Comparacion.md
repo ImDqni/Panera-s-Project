@@ -1,4 +1,65 @@
-# Panera’s · Comparación del código
+# Panera’s · Antes y después
+
+## Segunda revisión
+
+La portada reúne la presentación y la vitrina en una misma sección. El carrusel de inicio muestra seis destacados y cambia de ficha cada cinco segundos. Se detiene al pasar el puntero. La opción «Desactivar reproducción automática» habilita el desplazamiento manual. La preferencia de movimiento reducido también lo activa. Las cuatro filas del catálogo mantienen el desplazamiento manual para consultar las 41 fichas a su ritmo.
+
+El HTML y el CSS pasaron de 2.605 a 1.761 líneas. La hoja de estilos pasó de 771 a 458. Se unificaron los estilos de cuadrículas, botones y tarjetas, y los títulos y descripciones aprovechan los elementos HTML que ya tenían. El formato Prettier usa un ancho de 110 caracteres para que el marcado corto ocupe menos líneas.
+
+### Ficha de catálogo
+
+**Antes**
+
+```html
+<article class="producto-card">
+  <img
+    src="../images/panes-dulces/pan-de-frutas-01.webp"
+    alt="Pan de frutas"
+    class="producto-card__image"
+    loading="lazy"
+  />
+  <h4 class="producto-card__title">Pan de frutas</h4>
+  <p class="producto-card__description">
+    Trenzado con frutas confitadas y azúcar.
+  </p>
+</article>
+```
+
+**Después**
+
+```html
+<article class="tarjeta producto">
+  <img
+    src="../images/panes-dulces/pan-de-frutas-01.webp"
+    alt="Pan de frutas"
+    loading="lazy"
+  />
+  <h4>Pan de frutas</h4>
+  <p>Trenzado con frutas confitadas y azúcar.</p>
+</article>
+```
+
+`tarjeta` comparte el fondo, el borde y el espaciado con las secciones de servicios e historia. `producto` define el ancho de la ficha dentro del carrusel. El título y la descripción usan sus elementos semánticos sin clases individuales.
+
+### Reproducción de la vitrina
+
+Este bloque mueve las seis fichas con una sola animación. Cada ficha ocupa el ancho de la vitrina. El último paso desplaza la fila cinco anchos y no requiere una ficha clonada.
+
+```css
+.vitrina-bloque:not(:has(:checked)) .vitrina:not(:focus-within) .diapositivas {
+  animation: pasar 30s steps(6, jump-none) infinite;
+}
+
+@keyframes pasar {
+  to {
+    transform: translateX(-500%);
+  }
+}
+```
+
+## Primera revisión
+
+Los fragmentos siguientes comparan los adjuntos iniciales con la primera revisión publicada en el commit `b4d9a36`.
 
 La versión refactorizada incluye las cinco páginas y una hoja de estilos con formato Prettier. El diff adjunto muestra todas las líneas añadidas y eliminadas frente a los archivos originales. Las fotos y los logotipos del ZIP provienen del repositorio indicado en el README.
 

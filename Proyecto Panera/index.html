@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a1628" />
+    <meta name="theme-color" content="#101d34" />
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link rel="apple-touch-icon" href="images/favicon.png" />
     <meta
@@ -11,49 +11,36 @@
       content="Panera's - Panadería y pastelería artesanal. Calidad y frescura en cada producto."
     />
     <title>Panera's | Panadería y Pastelería Artesanal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
 
   <body>
-    <header class="header">
-      <div class="header__container">
-        <a href="index.html" class="header__logo">
-          <img src="images/logo.jpeg" alt="" class="header__logo-img" />
-          <span class="logo__text">Panera's</span>
+    <header>
+      <div class="contenedor barra">
+        <a href="index.html" class="marca">
+          <img src="images/logo.jpeg" alt="" />
+          <span>Panera's</span>
         </a>
 
-        <input
-          type="checkbox"
-          id="menu-toggle"
-          class="header__checkbox"
-          aria-controls="menu-principal"
-        />
-        <label for="menu-toggle" class="header__toggle">Menú</label>
+        <input type="checkbox" id="menu-toggle" class="menu-control" aria-controls="menu-principal" />
+        <label for="menu-toggle" class="menu-etiqueta">Menú</label>
 
-        <nav id="menu-principal" class="header__nav" aria-label="Principal">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="index.html" class="nav__link" aria-current="page"
-                >INICIO</a
-              >
+        <nav id="menu-principal" aria-label="Principal">
+          <ul class="enlaces">
+            <li>
+              <a href="index.html" aria-current="page">INICIO</a>
             </li>
-            <li class="nav__item">
-              <a href="pages/productos.html" class="nav__link">PRODUCTOS</a>
+            <li>
+              <a href="pages/productos.html">PRODUCTOS</a>
             </li>
-            <li class="nav__item">
-              <a href="pages/servicios.html" class="nav__link">SERVICIOS</a>
+            <li>
+              <a href="pages/servicios.html">SERVICIOS</a>
             </li>
-            <li class="nav__item">
-              <a href="pages/acerca.html" class="nav__link">QUIÉNES SOMOS</a>
+            <li>
+              <a href="pages/acerca.html">QUIÉNES SOMOS</a>
             </li>
-            <li class="nav__item">
-              <a href="pages/contacto.html" class="nav__link">UBICACIÓN</a>
+            <li>
+              <a href="pages/contacto.html">UBICACIÓN</a>
             </li>
           </ul>
         </nav>
@@ -61,289 +48,192 @@
     </header>
 
     <main>
-      <section class="hero">
-        <div class="hero__container">
-          <p class="hero__breadcrumb">PANADERÍA Y PASTELERÍA ARTESANAL</p>
-          <h1 class="hero__title">Horneado con amor, cada día.</h1>
-          <p class="hero__description">
-            Elaboramos nuestros productos artesanalmente cada mañana para
-            garantizar la frescura que mereces.
-          </p>
-          <div class="hero__actions">
-            <a href="pages/productos.html" class="btn btn--primary"
-              >Ver Productos</a
-            >
-          </div>
-        </div>
-      </section>
-
-      <section class="seccion-carrusel">
-        <div class="productos__container">
-          <div class="seccion-carrusel__header">
-            <p class="productos__breadcrumb">NUESTRA VITRINA</p>
-            <h2 class="productos__title">Especialidades recién horneadas</h2>
-            <p class="productos__subtitle">
-              Desliza para ver más especialidades.
+      <section class="portada">
+        <div class="contenedor columnas">
+          <div class="presentacion">
+            <p class="ceja">PANADERÍA Y PASTELERÍA ARTESANAL</p>
+            <h1>Horneado con amor, cada día.</h1>
+            <p>
+              Elaboramos nuestros productos artesanalmente cada mañana para garantizar la frescura que
+              mereces.
             </p>
+            <div class="acciones">
+              <a href="pages/productos.html" class="btn">Ver Productos</a>
+            </div>
           </div>
+          <div class="vitrina-bloque">
+            <h2>Especialidades recién horneadas</h2>
+            <label class="modo-carrusel"
+              ><input type="checkbox" id="carrusel-manual" /> Desactivar reproducción automática</label
+            >
+            <section class="carrusel vitrina" tabindex="0" aria-label="Especialidades recién horneadas">
+              <div class="diapositivas">
+                <div class="destacado">
+                  <img src="images/panes-salados/pan-campesino-01.webp" alt="Pan campesino" />
+                  <div>
+                    <span class="etiqueta">ARTESANAL</span>
+                    <h3>Pan campesino</h3>
+                    <p>Hogaza redonda rústica con harina y fermentación tradicional.</p>
+                    <a href="pages/productos.html#panes-salados" class="btn">Ver en Catálogo</a>
+                  </div>
+                </div>
 
-          <section
-            class="carrusel-hero"
-            tabindex="0"
-            aria-label="Especialidades recién horneadas"
-          >
-            <div class="carrusel-hero__slide">
-              <img
-                src="images/panes-salados/pan-campesino-01.webp"
-                alt="Pan campesino"
-                class="carrusel-hero__image"
-              />
-              <div class="carrusel-hero__info">
-                <span class="carrusel-hero__badge">ARTESANAL</span>
-                <h3 class="carrusel-hero__title">Pan campesino</h3>
-                <p class="carrusel-hero__desc">
-                  Hogaza redonda rústica con harina y fermentación tradicional.
-                </p>
-                <a href="pages/productos.html#panes" class="btn btn--primary"
-                  >Ver en Catálogo</a
-                >
-              </div>
-            </div>
+                <div class="destacado">
+                  <img src="images/panes-dulces/pan-de-frutas-01.webp" alt="Pan de frutas" />
+                  <div>
+                    <span class="etiqueta">DULCE</span>
+                    <h3>Pan de frutas</h3>
+                    <p>Trenzado con frutas confitadas y azúcar.</p>
+                    <a href="pages/productos.html#panes-dulces" class="btn">Ver en Catálogo</a>
+                  </div>
+                </div>
 
-            <div class="carrusel-hero__slide">
-              <img
-                src="images/panes-dulces/pan-de-frutas-01.webp"
-                alt="Pan de frutas"
-                class="carrusel-hero__image"
-              />
-              <div class="carrusel-hero__info">
-                <span class="carrusel-hero__badge">DULCE</span>
-                <h3 class="carrusel-hero__title">Pan de frutas</h3>
-                <p class="carrusel-hero__desc">
-                  Trenzado con frutas confitadas y azúcar.
-                </p>
-                <a
-                  href="pages/productos.html#panes-dulces"
-                  class="btn btn--primary"
-                  >Ver en Catálogo</a
-                >
-              </div>
-            </div>
+                <div class="destacado">
+                  <img src="images/tortas/torta-de-chocolate-01.webp" alt="Torta de chocolate" />
+                  <div>
+                    <span class="etiqueta">ESPECIAL</span>
+                    <h3>Torta de chocolate</h3>
+                    <p>Porción húmeda cubierta de chocolate.</p>
+                    <a href="pages/productos.html#tortas" class="btn">Ver en Catálogo</a>
+                  </div>
+                </div>
 
-            <div class="carrusel-hero__slide">
-              <img
-                src="images/tortas/torta-de-chocolate-01.webp"
-                alt="Torta de chocolate"
-                class="carrusel-hero__image"
-              />
-              <div class="carrusel-hero__info">
-                <span class="carrusel-hero__badge">ESPECIAL</span>
-                <h3 class="carrusel-hero__title">Torta de chocolate</h3>
-                <p class="carrusel-hero__desc">
-                  Porción húmeda cubierta de chocolate.
-                </p>
-                <a href="pages/productos.html#tortas" class="btn btn--primary"
-                  >Ver en Catálogo</a
-                >
-              </div>
-            </div>
+                <div class="destacado">
+                  <img
+                    src="images/panes-dulces/pan-de-queso-con-guayaba-01.webp"
+                    alt="Pan de queso con guayaba"
+                  />
+                  <div>
+                    <span class="etiqueta">COMBINADO</span>
+                    <h3>Pan de queso con guayaba</h3>
+                    <p>Pan trenzado de queso relleno de guayaba.</p>
+                    <a href="pages/productos.html#panes-dulces" class="btn">Ver en Catálogo</a>
+                  </div>
+                </div>
 
-            <div class="carrusel-hero__slide">
-              <img
-                src="images/panes-dulces/pan-de-queso-con-guayaba-01.webp"
-                alt="Pan de queso con guayaba"
-                class="carrusel-hero__image"
-              />
-              <div class="carrusel-hero__info">
-                <span class="carrusel-hero__badge">COMBINADO</span>
-                <h3 class="carrusel-hero__title">Pan de queso con guayaba</h3>
-                <p class="carrusel-hero__desc">
-                  Pan trenzado de queso relleno de guayaba.
-                </p>
-                <a
-                  href="pages/productos.html#panes-dulces"
-                  class="btn btn--primary"
-                  >Ver en Catálogo</a
-                >
-              </div>
-            </div>
+                <div class="destacado">
+                  <img src="images/panes-salados/pan-canilla-01.webp" alt="Pan canilla" />
+                  <div>
+                    <span class="etiqueta">POPULAR</span>
+                    <h3>Pan canilla</h3>
+                    <p>Clásicas barras crujientes recién horneadas.</p>
+                    <a href="pages/productos.html#panes-salados" class="btn">Ver en Catálogo</a>
+                  </div>
+                </div>
 
-            <div class="carrusel-hero__slide">
-              <img
-                src="images/panes-salados/pan-canilla-01.webp"
-                alt="Pan canilla"
-                class="carrusel-hero__image"
-              />
-              <div class="carrusel-hero__info">
-                <span class="carrusel-hero__badge">POPULAR</span>
-                <h3 class="carrusel-hero__title">Pan canilla</h3>
-                <p class="carrusel-hero__desc">
-                  Clásicas barras crujientes recién horneadas.
-                </p>
-                <a
-                  href="pages/productos.html#panes-salados"
-                  class="btn btn--primary"
-                  >Ver en Catálogo</a
-                >
+                <div class="destacado">
+                  <img src="images/pasteleria/dona-con-chocolate-01.webp" alt="Dona con chocolate" />
+                  <div>
+                    <span class="etiqueta">NUEVO</span>
+                    <h3>Dona con chocolate</h3>
+                    <p>Dona con cobertura de chocolate y granas.</p>
+                    <a href="pages/productos.html#pasteleria" class="btn">Ver en Catálogo</a>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            <div class="carrusel-hero__slide">
-              <img
-                src="images/pasteleria/dona-con-chocolate-01.webp"
-                alt="Dona con chocolate"
-                class="carrusel-hero__image"
-              />
-              <div class="carrusel-hero__info">
-                <span class="carrusel-hero__badge">NUEVO</span>
-                <h3 class="carrusel-hero__title">Dona con chocolate</h3>
-                <p class="carrusel-hero__desc">
-                  Dona con cobertura de chocolate y granas.
-                </p>
-                <a
-                  href="pages/productos.html#pasteleria"
-                  class="btn btn--primary"
-                  >Ver en Catálogo</a
-                >
-              </div>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
       </section>
 
       <section class="productos">
-        <div class="productos__container">
-          <div class="seccion-carrusel__header">
-            <p class="productos__breadcrumb">EXPLORA PANERA'S</p>
-            <h2 class="productos__title">Descubre nuestras secciones</h2>
+        <div class="contenedor">
+          <div class="encabezado">
+            <p class="ceja">EXPLORA PANERA'S</p>
+            <h2>Descubre nuestras secciones</h2>
           </div>
 
-          <div class="servicios-grid">
-            <article class="servicio-card">
-              <div class="servicio-card__icon">🥖</div>
-              <h3 class="servicio-card__title">Nuestros Productos</h3>
-              <p class="servicio-card__text">
-                Panes dulces, salados, tortas y pastelería fina elaborados cada
-                mañana con ingredientes naturales.
+          <div class="cuadricula">
+            <article class="tarjeta">
+              <div class="icono">🥖</div>
+              <h3>Nuestros Productos</h3>
+              <p>
+                Panes dulces, salados, tortas y pastelería fina elaborados cada mañana con ingredientes
+                naturales.
               </p>
-              <a href="pages/productos.html" class="btn btn--primary"
-                >Ver Catálogo</a
-              >
+              <a href="pages/productos.html" class="btn">Ver Catálogo</a>
             </article>
 
-            <article class="servicio-card">
-              <div class="servicio-card__icon">🍰</div>
-              <h3 class="servicio-card__title">Nuestros Servicios</h3>
-              <p class="servicio-card__text">
-                Panadería artesanal, tortas para eventos, pastelería y pedidos
-                especiales al mayor y detal.
+            <article class="tarjeta">
+              <div class="icono">🍰</div>
+              <h3>Nuestros Servicios</h3>
+              <p>
+                Panadería artesanal, tortas para eventos, pastelería y pedidos especiales al mayor y detal.
               </p>
-              <a href="pages/servicios.html" class="btn btn--primary"
-                >Ver Servicios</a
-              >
+              <a href="pages/servicios.html" class="btn">Ver Servicios</a>
             </article>
 
-            <article class="servicio-card">
-              <div class="servicio-card__icon">📍</div>
-              <h3 class="servicio-card__title">Ubicación y Contacto</h3>
-              <p class="servicio-card__text">
-                Visítanos en nuestra panadería con café listo y pan recién
-                horneado. Consulta horarios y mapa.
+            <article class="tarjeta">
+              <div class="icono">📍</div>
+              <h3>Ubicación y Contacto</h3>
+              <p>
+                Visítanos en nuestra panadería con café listo y pan recién horneado. Consulta horarios y mapa.
               </p>
-              <a href="pages/contacto.html" class="btn btn--primary"
-                >Cómo Llegar</a
-              >
+              <a href="pages/contacto.html" class="btn">Cómo Llegar</a>
             </article>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="footer__container">
-        <div class="footer__top">
-          <div class="footer__brand">
-            <h3 class="footer__logo">Panera's</h3>
-            <p class="footer__tagline">
-              Calidad y Frescura en cada producto.<br />Panadería y Pastelería
-              Artesanal.
-            </p>
+    <footer>
+      <div class="contenedor">
+        <div class="pie-columnas">
+          <div>
+            <h3>Panera's</h3>
+            <p>Calidad y Frescura en cada producto.<br />Panadería y Pastelería Artesanal.</p>
           </div>
 
-          <div class="footer__section">
-            <h4 class="footer__title">PÁGINAS</h4>
-            <ul class="footer__links">
-              <li><a href="index.html" class="footer__link">Inicio</a></li>
+          <div>
+            <h4>PÁGINAS</h4>
+            <ul>
+              <li><a href="index.html">Inicio</a></li>
               <li>
-                <a href="pages/productos.html" class="footer__link"
-                  >Productos</a
-                >
+                <a href="pages/productos.html">Productos</a>
               </li>
               <li>
-                <a href="pages/servicios.html" class="footer__link"
-                  >Servicios</a
-                >
+                <a href="pages/servicios.html">Servicios</a>
               </li>
               <li>
-                <a href="pages/acerca.html" class="footer__link"
-                  >Quiénes Somos</a
-                >
+                <a href="pages/acerca.html">Quiénes Somos</a>
               </li>
               <li>
-                <a href="pages/contacto.html" class="footer__link">Ubicación</a>
+                <a href="pages/contacto.html">Ubicación</a>
               </li>
             </ul>
           </div>
 
-          <div class="footer__section">
-            <h4 class="footer__title">PRODUCTOS</h4>
-            <ul class="footer__links">
+          <div>
+            <h4>PRODUCTOS</h4>
+            <ul>
               <li>
-                <a href="pages/productos.html#panes" class="footer__link"
-                  >Panes</a
-                >
+                <a href="pages/productos.html#panes">Panes</a>
               </li>
               <li>
-                <a href="pages/productos.html#tortas" class="footer__link"
-                  >Tortas</a
-                >
+                <a href="pages/productos.html#tortas">Tortas</a>
               </li>
               <li>
-                <a href="pages/productos.html#pasteleria" class="footer__link"
-                  >Pastelería</a
-                >
+                <a href="pages/productos.html#pasteleria">Pastelería</a>
               </li>
             </ul>
           </div>
 
-          <div class="footer__section">
-            <h4 class="footer__title">CONTACTOS</h4>
-            <ul class="footer__links">
+          <div>
+            <h4>CONTACTOS</h4>
+            <ul>
               <li>
-                <a href="https://wa.me/+584228507289" class="footer__link"
-                  >WhatsApp</a
-                >
+                <a href="https://wa.me/+584228507289">WhatsApp</a>
               </li>
               <li>
-                <a
-                  href="https://www.instagram.com/panerasca"
-                  class="footer__link"
-                  >Instagram</a
-                >
+                <a href="https://www.instagram.com/panerasca">Instagram</a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div class="footer__divider"></div>
-
-        <div class="footer__bottom">
-          <p class="footer__copyright">
-            &copy; 2025 Panera's. Todos los derechos reservados.
-          </p>
-          <p class="footer__credit">
-            Hecho con <span class="footer__heart">♥</span> y harina fresca.
-          </p>
+        <div class="pie-legal">
+          <p>&copy; 2025 Panera's. Todos los derechos reservados.</p>
+          <p>Hecho con ♥ y harina fresca.</p>
         </div>
       </div>
     </footer>

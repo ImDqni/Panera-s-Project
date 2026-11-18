@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a1628" />
+    <meta name="theme-color" content="#101d34" />
     <link rel="icon" type="image/png" href="../images/favicon.png" />
     <link rel="apple-touch-icon" href="../images/favicon.png" />
     <meta
@@ -11,49 +11,36 @@
       content="Quiénes Somos - Panera's. Panadería y pastelería artesanal. Amor por el pan bien hecho y fermentación natural."
     />
     <title>Quiénes Somos | Panera's - Panadería y Pastelería Artesanal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
 
   <body>
-    <header class="header">
-      <div class="header__container">
-        <a href="../index.html" class="header__logo">
-          <img src="../images/logo.jpeg" alt="" class="header__logo-img" />
-          <span class="logo__text">Panera's</span>
+    <header>
+      <div class="contenedor barra">
+        <a href="../index.html" class="marca">
+          <img src="../images/logo.jpeg" alt="" />
+          <span>Panera's</span>
         </a>
 
-        <input
-          type="checkbox"
-          id="menu-toggle"
-          class="header__checkbox"
-          aria-controls="menu-principal"
-        />
-        <label for="menu-toggle" class="header__toggle">Menú</label>
+        <input type="checkbox" id="menu-toggle" class="menu-control" aria-controls="menu-principal" />
+        <label for="menu-toggle" class="menu-etiqueta">Menú</label>
 
-        <nav id="menu-principal" class="header__nav" aria-label="Principal">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="../index.html" class="nav__link">INICIO</a>
+        <nav id="menu-principal" aria-label="Principal">
+          <ul class="enlaces">
+            <li>
+              <a href="../index.html">INICIO</a>
             </li>
-            <li class="nav__item">
-              <a href="productos.html" class="nav__link">PRODUCTOS</a>
+            <li>
+              <a href="productos.html">PRODUCTOS</a>
             </li>
-            <li class="nav__item">
-              <a href="servicios.html" class="nav__link">SERVICIOS</a>
+            <li>
+              <a href="servicios.html">SERVICIOS</a>
             </li>
-            <li class="nav__item">
-              <a href="acerca.html" class="nav__link" aria-current="page"
-                >QUIÉNES SOMOS</a
-              >
+            <li>
+              <a href="acerca.html" aria-current="page">QUIÉNES SOMOS</a>
             </li>
-            <li class="nav__item">
-              <a href="contacto.html" class="nav__link">UBICACIÓN</a>
+            <li>
+              <a href="contacto.html">UBICACIÓN</a>
             </li>
           </ul>
         </nav>
@@ -61,191 +48,145 @@
     </header>
 
     <main>
-      <section class="page-header">
-        <div class="page-header__container">
-          <p class="page-header__breadcrumb">NUESTRA HISTORIA Y VALORES</p>
-          <h1 class="page-header__title">Conócenos de cerca</h1>
-          <p class="page-header__subtitle">
-            El verdadero sabor del pan artesanal se construye con tiempo,
-            paciencia y amor.
-          </p>
+      <section class="introduccion">
+        <div>
+          <p class="ceja">NUESTRA HISTORIA Y VALORES</p>
+          <h1>Conócenos de cerca</h1>
+          <p>El verdadero sabor del pan artesanal se construye con tiempo, paciencia y amor.</p>
         </div>
       </section>
 
       <section class="nosotros">
-        <div class="nosotros__container">
-          <div class="nosotros__image-wrapper">
-            <div class="nosotros__image-placeholder">
-              <img
-                src="../images/panes-salados/pan-campesino-01.webp"
-                alt="Pan artesanal de Panera's"
-                class="nosotros__illustration"
-              />
-            </div>
-            <div class="nosotros__badge">
-              <span class="badge__text">100%<br />ARTESANAL</span>
-            </div>
-          </div>
-
-          <div class="nosotros__content">
-            <h2 class="nosotros__title">
-              Más que una panadería,
-              <span class="nosotros__title--highlight"
-                >un lugar de encuentro</span
-              >
-            </h2>
-            <p class="nosotros__text">
-              Desde nuestros inicios, hemos cultivado más que masa madre:
-              cultivamos vínculos con nuestra comunidad. Creemos en el amor por
-              el pan bien hecho, en ingredientes frescos y naturales, y en
+        <div class="contenedor columnas">
+          <img src="../images/panes-salados/pan-campesino-01.webp" alt="Pan artesanal de Panera's" />
+          <div>
+            <h2>Más que una panadería, un lugar de encuentro</h2>
+            <p>
+              Desde nuestros inicios, hemos cultivado más que masa madre: cultivamos vínculos con nuestra
+              comunidad. Creemos en el amor por el pan bien hecho, en ingredientes frescos y naturales, y en
               respetar los tiempos de fermentación que cada receta merece.
             </p>
-            <p class="nosotros__text">
-              Cada pieza que sale de nuestro horno lleva el cuidado de manos
-              expertas y la pasión de generaciones dedicadas al arte de la
-              panadería. Porque sabemos que el verdadero sabor se construye con
-              tiempo, paciencia y amor.
+            <p>
+              Cada pieza que sale de nuestro horno lleva el cuidado de manos expertas y la pasión de
+              generaciones dedicadas al arte de la panadería. Porque sabemos que el verdadero sabor se
+              construye con tiempo, paciencia y amor.
             </p>
-            <div class="nosotros__tags">
-              <span class="tag">♦ Ingredientes frescos</span>
-              <span class="tag">♦ Recetas artesanales</span>
-              <span class="tag">♦ Horneado diario</span>
-              <span class="tag">♦ Con amor familiar</span>
+            <div class="acciones">
+              <span class="etiqueta">♦ Ingredientes frescos</span>
+              <span class="etiqueta">♦ Recetas artesanales</span>
+              <span class="etiqueta">♦ Horneado diario</span>
+              <span class="etiqueta">♦ Con amor familiar</span>
             </div>
           </div>
         </div>
       </section>
 
       <section class="productos">
-        <div class="productos__container">
-          <div class="seccion-carrusel__header">
-            <p class="productos__breadcrumb">FILOSOFÍA DE TRABAJO</p>
-            <h3 class="productos__title">Lo que nos hace únicos</h3>
+        <div class="contenedor">
+          <div class="encabezado">
+            <p class="ceja">FILOSOFÍA DE TRABAJO</p>
+            <h2>Lo que nos hace únicos</h2>
           </div>
 
-          <div class="pilares-grid">
-            <div class="pilar-card">
-              <div class="pilar-card__icon">🌾</div>
-              <h4 class="pilar-card__title">Harinas Seleccionadas</h4>
-              <p class="pilar-card__text">
-                Utilizamos granos de primera calidad sin aditivos artificiales
-                para lograr cortezas crujientes y migas esponjosas.
+          <div class="cuadricula">
+            <div class="tarjeta">
+              <div class="icono">🌾</div>
+              <h3>Harinas Seleccionadas</h3>
+              <p>
+                Utilizamos granos de primera calidad sin aditivos artificiales para lograr cortezas crujientes
+                y migas esponjosas.
               </p>
             </div>
 
-            <div class="pilar-card">
-              <div class="pilar-card__icon">⏱️</div>
-              <h4 class="pilar-card__title">Fermentación Lenta</h4>
-              <p class="pilar-card__text">
-                Respetamos los tiempos naturales de levado para obtener panes de
-                fácil digestión, aromas profundos y gran durabilidad.
+            <div class="tarjeta">
+              <div class="icono">⏱️</div>
+              <h3>Fermentación Lenta</h3>
+              <p>
+                Respetamos los tiempos naturales de levado para obtener panes de fácil digestión, aromas
+                profundos y gran durabilidad.
               </p>
             </div>
 
-            <div class="pilar-card">
-              <div class="pilar-card__icon">👨‍🍳</div>
-              <h4 class="pilar-card__title">Maestros Artesanos</h4>
-              <p class="pilar-card__text">
-                El toque humano en cada moldeado, trenzado y horneado garantiza
-                piezas únicas con alma y sabor casero.
+            <div class="tarjeta">
+              <div class="icono">👨‍🍳</div>
+              <h3>Maestros Artesanos</h3>
+              <p>
+                El toque humano en cada moldeado, trenzado y horneado garantiza piezas únicas con alma y sabor
+                casero.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="cta-banner">
-        <div class="cta-banner__container">
-          <h3 class="cta-banner__title">
-            ¿Listo para probar nuestro pan recién salido del horno?
-          </h3>
-          <p class="cta-banner__text">
-            Descubre toda nuestra vitrina de productos o contáctanos para
-            visitarnos.
-          </p>
-          <div class="hero__actions">
-            <a href="productos.html" class="btn btn--primary">Ver Vitrina</a>
-            <a href="contacto.html" class="btn btn--outline"
-              >Dónde encontrarnos</a
-            >
+      <section class="llamada">
+        <div>
+          <h3>¿Listo para probar nuestro pan recién salido del horno?</h3>
+          <p>Descubre toda nuestra vitrina de productos o contáctanos para visitarnos.</p>
+          <div class="acciones">
+            <a href="productos.html" class="btn">Ver Vitrina</a>
+            <a href="contacto.html" class="btn btn--outline">Dónde encontrarnos</a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="footer__container">
-        <div class="footer__top">
-          <div class="footer__brand">
-            <h3 class="footer__logo">Panera's</h3>
-            <p class="footer__tagline">
-              Calidad y Frescura en cada producto.<br />Panadería y Pastelería
-              Artesanal.
-            </p>
+    <footer>
+      <div class="contenedor">
+        <div class="pie-columnas">
+          <div>
+            <h3>Panera's</h3>
+            <p>Calidad y Frescura en cada producto.<br />Panadería y Pastelería Artesanal.</p>
           </div>
 
-          <div class="footer__section">
-            <h4 class="footer__title">PÁGINAS</h4>
-            <ul class="footer__links">
-              <li><a href="../index.html" class="footer__link">Inicio</a></li>
+          <div>
+            <h4>PÁGINAS</h4>
+            <ul>
+              <li><a href="../index.html">Inicio</a></li>
               <li>
-                <a href="productos.html" class="footer__link">Productos</a>
+                <a href="productos.html">Productos</a>
               </li>
               <li>
-                <a href="servicios.html" class="footer__link">Servicios</a>
+                <a href="servicios.html">Servicios</a>
               </li>
               <li>
-                <a href="acerca.html" class="footer__link">Quiénes Somos</a>
+                <a href="acerca.html">Quiénes Somos</a>
               </li>
-              <li><a href="contacto.html" class="footer__link">Contacto</a></li>
+              <li><a href="contacto.html">Contacto</a></li>
             </ul>
           </div>
 
-          <div class="footer__section">
-            <h4 class="footer__title">PRODUCTOS</h4>
-            <ul class="footer__links">
+          <div>
+            <h4>PRODUCTOS</h4>
+            <ul>
               <li>
-                <a href="productos.html#panes" class="footer__link">Panes</a>
+                <a href="productos.html#panes">Panes</a>
               </li>
               <li>
-                <a href="productos.html#tortas" class="footer__link">Tortas</a>
+                <a href="productos.html#tortas">Tortas</a>
               </li>
               <li>
-                <a href="productos.html#pasteleria" class="footer__link"
-                  >Pastelería</a
-                >
+                <a href="productos.html#pasteleria">Pastelería</a>
               </li>
             </ul>
           </div>
 
-          <div class="footer__section">
-            <h4 class="footer__title">CONTACTOS</h4>
-            <ul class="footer__links">
+          <div>
+            <h4>CONTACTOS</h4>
+            <ul>
               <li>
-                <a href="https://wa.me/+584228507289" class="footer__link"
-                  >WhatsApp</a
-                >
+                <a href="https://wa.me/+584228507289">WhatsApp</a>
               </li>
               <li>
-                <a
-                  href="https://www.instagram.com/panerasca"
-                  class="footer__link"
-                  >Instagram</a
-                >
+                <a href="https://www.instagram.com/panerasca">Instagram</a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div class="footer__divider"></div>
-
-        <div class="footer__bottom">
-          <p class="footer__copyright">
-            &copy; 2025 Panera's. Todos los derechos reservados.
-          </p>
-          <p class="footer__credit">
-            Hecho con <span class="footer__heart">♥</span> y harina fresca.
-          </p>
+        <div class="pie-legal">
+          <p>&copy; 2025 Panera's. Todos los derechos reservados.</p>
+          <p>Hecho con ♥ y harina fresca.</p>
         </div>
       </div>
     </footer>

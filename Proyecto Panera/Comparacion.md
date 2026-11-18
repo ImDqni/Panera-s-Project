@@ -1,5 +1,27 @@
 # Panera’s · Antes y después
 
+## Tercera revisión
+
+El inicio queda con una foto fija de baguettes y un enlace al catálogo. Se retiraron las seis diapositivas de portada, el control de reproducción y las reglas de animación. Las 41 fichas permanecen en el catálogo.
+
+**Antes**
+
+```html
+<label class="modo-carrusel"
+  ><input type="checkbox" id="carrusel-manual" /> Desactivar reproducción automática</label
+>
+```
+
+**Después**
+
+```html
+<img src="images/panes-salados/pan-salado-al-ajillo-01.webp" alt="Baguettes artesanales de Panera’s" />
+```
+
+Las cuatro filas del catálogo usan una sola clase, `carrusel`. La regla reúne la alineación de las tarjetas y el desplazamiento horizontal nativo. El HTML y el CSS de las cinco páginas pasaron de 1.761 a 1.621 líneas.
+
+[Ver todos los cambios de esta revisión](https://github.com/ImDqni/Panera-s-Project/compare/5cf611b...refactor-html-css)
+
 ## Segunda revisión
 
 La portada reúne la presentación y la vitrina en una misma sección. El carrusel de inicio muestra seis destacados y cambia de ficha cada cinco segundos. Se detiene al pasar el puntero. La opción «Desactivar reproducción automática» habilita el desplazamiento manual. La preferencia de movimiento reducido también lo activa. Las cuatro filas del catálogo mantienen el desplazamiento manual para consultar las 41 fichas a su ritmo.
